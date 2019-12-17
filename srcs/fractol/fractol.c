@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:20:41 by dapinto           #+#    #+#             */
-/*   Updated: 2019/12/17 12:22:16 by dapinto          ###   ########.fr       */
+/*   Updated: 2019/12/17 14:39:52 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int main(int argc, char **argv)
 {
-(void)argc;
+	(void)argc;
+	(void)argv;
 
-return (0);
+	return (0);
 }

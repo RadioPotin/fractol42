@@ -6,7 +6,7 @@
 #    By: dapinto<marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 16:47:44 by evogel            #+#    #+#              #
-#    Updated: 2019/12/17 13:41:55 by dapinto          ###   ########.fr        #
+#    Updated: 2019/12/17 15:11:11 by dapinto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +54,8 @@ COM_STRING   = "[PROJECT]"
 #-Make-#
 FRAC_NAME = Fractol
 FRAC_NAMEDEB = fractoldeb
+FRAC_NAME_LIN = Fractol_linux
+FRAC_NAMEDEB_LIN = Fractol_linuxdeb
 CC = clang
 WFG = -Wall -Wextra -Werror
 COMP = $(CC) -c
@@ -105,9 +107,9 @@ FRAC_DEBOBJS = $(patsubst %.c, %deb.o, $(FRAC_SRCS))
 FRAC_DEBOBJS_PATH = $(addprefix $(FRAC_DEBOBJS_DIR), $(FRAC_DEBOBJS))
 
 #-Rules-#
-all: $(FRAC_NAME_MAC)
+all: $(FRAC_NAME)
 
-mac: $(FRAC_NAME_MAC)
+mac: $(FRAC_NAME)
 
 linux:  $(FRAC_NAME_LIN)
 
@@ -128,16 +130,16 @@ $(LIBDEB): FORCE
 
 #FRACTOL LINUX
 $(FRAC_NAME_LIN): $(LIB) $(FRAC_OBJS_DIR) $(FRAC_OBJS_PATH)
-	@$(CC) $(WFG) $(FRAC_INCS) $(FRAC_OBJS_PATH) $(LIB) $(MINILIBLINUX) -o $(FRAC_NAME)
+	@$(CC) $(WFG) $(FRAC_INCS) $(FRAC_OBJS_PATH) $(LIB) $(MINILIBLINUX) -o $(FRAC_NAME_LIN)
 
 $(FRAC_NAMEDEB_LIN): $(LIBDEB) $(FRAC_DEBOBJS_DIR) $(FRAC_DEBOBJS_PATH)
-	@$(DEBUG) $(WFG) $(FRAC_INCS) $(FRAC_DEBOBJS_PATH) $(LIBDEB) $(MINILIBLINUX) -o $(FRAC_NAMEDEB)
+	@$(DEBUG) $(WFG) $(FRAC_INCS) $(FRAC_DEBOBJS_PATH) $(LIBDEB) $(MINILIBLINUX) -o $(FRAC_NAMEDEB_LIN)
 
 #FRACTOL MAC
-$(FRAC_NAME_MAC): $(LIB) $(FRAC_OBJS_DIR) $(FRAC_OBJS_PATH)
+$(FRAC_NAME): $(LIB) $(FRAC_OBJS_DIR) $(FRAC_OBJS_PATH)
 	@$(CC) $(WFG) $(FRAC_INCS) $(FRAC_OBJS_PATH) $(LIB) $(MINILIBMAC) -o $(FRAC_NAME)
 
-$(FRAC_NAMEDEB_MAC): $(LIBDEB) $(FRAC_DEBOBJS_DIR) $(FRAC_DEBOBJS_PATH)
+$(FRAC_NAMEDEB): $(LIBDEB) $(FRAC_DEBOBJS_DIR) $(FRAC_DEBOBJS_PATH)
 	@$(DEBUG) $(WFG) $(FRAC_INCS) $(FRAC_DEBOBJS_PATH) $(LIBDEB) $(MINILIBMAC) -o $(FRAC_NAMEDEB)
 
 $(FRAC_OBJS_DIR)%.o : $(FRAC_SRCS_DIR)%.c $(FRAC_HDS)
@@ -145,7 +147,6 @@ $(FRAC_OBJS_DIR)%.o : $(FRAC_SRCS_DIR)%.c $(FRAC_HDS)
 
 $(FRAC_DEBOBJS_DIR)%deb.o : $(FRAC_SRCS_DIR)%.c $(FRAC_HDS)
 	@$(call run_and_test, $(DEBUG) -c $(WFG) $(FRAC_INCS) $< -o $@)
-
 
 #mkdir
 $(DEBOBJS_DIR):
@@ -156,7 +157,6 @@ $(DEBUG_DIR):
 
 $(FRAC_OBJS_DIR):
 	@mkdir -p $(FRAC_OBJS_DIR)
-
 
 FORCE:
 
@@ -170,9 +170,9 @@ clean:
 fclean: clean
 	@$(MKE) $(MAKE_PATH) fclean
 	@$(RMRF) $(FRAC_NAME_LIN)
-	@$(RMRF) $(FRAC_NAME_MAC)
 	@$(RMRF) $(FRAC_NAMEDEB_LIN)
-	@$(RMRF) $(FRAC_NAMEDEB_MAC)
+	@$(RMRF) $(FRAC_NAME)
+	@$(RMRF) $(FRAC_NAMEDEB)
 	@$(RMRF) $(OBJS_DIR)
 	@$(RMRF) $(DEBUG_DIR)
 
