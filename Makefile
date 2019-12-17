@@ -6,7 +6,7 @@
 #    By: dapinto<marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 16:47:44 by evogel            #+#    #+#              #
-#    Updated: 2019/12/10 14:37:08 by dapinto          ###   ########.fr        #
+#    Updated: 2019/12/17 13:41:55 by dapinto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,15 +52,15 @@ WARN_STRING  = "[HOLDUP]"
 COM_STRING   = "[PROJECT]"
 
 #-Make-#
-ASM_NAME = asm
-COREWAR_NAME = corewar
-ASM_NAMEDEB = asmdeb
-COREWAR_NAMEDEB = corewardeb
+FRAC_NAME = Fractol
+FRAC_NAMEDEB = fractoldeb
 CC = clang
 WFG = -Wall -Wextra -Werror
 COMP = $(CC) -c
 DEBUG = $(CC) -g -fsanitize=address -fno-omit-frame-pointer
 ANALYZE = $(DEBUG) -analyze
+MINILIBLINUX = -lmlx -lXext -lX11 -L $(MLX_DIR)
+MINILIBMAC = -lmlx -framework OpenGL -framework AppKit -L $(MLX_DIR)
 MKDIR = mkdir -p
 DSYM = *.dSYM
 MKE = make -C
@@ -68,29 +68,19 @@ RMRF = rm -rf
 
 #-Libraries, includes, and paths-#
 #-Directories-#
+MLX_DIR = ./minilibx/
 DEBUG_DIR = ./debug/
 HEADER_DIR = ./includes/
 LIB_INCS += -Ilibft/includes
-vpath %.c $(COREWAR_SRCS_DIR)
-vpath %.c $(ASM_SRCS_DIR)
+vpath %.c $(FRAC_SRCS_DIR)
 vpath %.o $(OBJS_DIR)
 vpath %deb.o $(DEBOBJS_DIR)
 vpath %.h ./includes/
 # ASM
-ASM_HDS += asm.h
-ASM_HDS += op.h
-ASM_HDS += error.h
-ASM_HDS += op_code.h
-ASM_HEADERS = $(addprefix $(HEADER_DIR), $(ASM_HDS))
-ASM_INCS += -I$(HEADER_DIR)
-ASM_INCS += $(LIB_INCS)
-# COREWAR
-COREWAR_HDS += corewar.h
-COREWAR_HDS += error.h
-COREWAR_HDS += op.h
-COREWAR_HEADERS = $(addprefix $(HEADER_DIR), $(COREWAR_HDS))
-COREWAR_INCS += -I$(HEADER_DIR)
-COREWAR_INCS += $(LIB_INCS)
+FRAC_HDS += fractol.h
+FRAC_HEADERS = $(addprefix $(HEADER_DIR), $(FRAC_HDS))
+FRAC_INCS += -I$(HEADER_DIR)
+FRAC_INCS += $(LIB_INCS)
 # LIBFT
 LIB_PATH = libft/
 MAKE_PATH = libft/
@@ -98,97 +88,32 @@ LIB = $(LIB_PATH)libft.a
 LIBDEB= $(LIB_PATH)libftdeb.a
 
 #-Sources and paths-#
-# ASM
-ASM_SRCS = asm.c
-ASM_SRCS += assembler.c
-ASM_SRCS += asm_errout.c
-ASM_SRCS += check_arguments.c
-ASM_SRCS += byte_encoder.c
-ASM_SRCS += byte_header_encoder.c
-ASM_SRCS += byte_execode_encoder.c
-ASM_SRCS += byte_encoder_opfield.c
-ASM_SRCS += byte_encoder_argfield.c
-ASM_SRCS += byte_encoder_argument.c
-ASM_SRCS += byte_encoder_converter.c
-ASM_SRCS += free_all.c
-ASM_SRCS += label_hashtable.c
-ASM_SRCS += lexer.c
-ASM_SRCS += lexer_is_token1.c
-ASM_SRCS += lexer_is_token2.c
-ASM_SRCS += lexer_is_token3.c
-ASM_SRCS += lexer_is_token4.c
-ASM_SRCS += lexer_token_storer.c
-ASM_SRCS += lexer_token_set1.c
-ASM_SRCS += lexer_token_set2.c
-ASM_SRCS += lexer_token_set3.c
-ASM_SRCS += miscellaneous.c
-ASM_SRCS += miscellaneous2.c
-ASM_SRCS += op_code_init.c
-ASM_SRCS += op_code_set_1.c
-ASM_SRCS += op_code_set_2.c
-ASM_SRCS += op_code_set_3.c
-ASM_SRCS += print_hash.c
-ASM_SRCS += print_token_list.c
-ASM_SRCS += print_verbose_1.c
-ASM_SRCS += print_verbose_2.c
-ASM_SRCS += print_verbose_3.c
-ASM_SRCS += print_verbose_encoder.c
-ASM_SRCS += check_header.c
-ASM_SRCS += check_label_mention.c
-ASM_SRCS += count.c
-ASM_SRCS += dispatch.c
-ASM_SRCS += error.c
-ASM_SRCS += get_index.c
-ASM_SRCS += get_relative.c
-ASM_SRCS += get_t_dir_size.c
-ASM_SRCS += is_com.c
-ASM_SRCS += is_correct.c
-ASM_SRCS += is_dir_call.c
-ASM_SRCS += is_ind_call.c
-ASM_SRCS += is_newline.c
-ASM_SRCS += is_reg.c
-ASM_SRCS += is_sep.c
-ASM_SRCS += start_add.c
-ASM_SRCS += start_aff.c
-ASM_SRCS += start_and_or_xor.c
-ASM_SRCS += start_ld_lld.c
-ASM_SRCS += start_ldi_lldi.c
-ASM_SRCS += start_live.c
-ASM_SRCS += start_st.c
-ASM_SRCS += start_sti.c
-ASM_SRCS += get_args.c
-
-ASM_SRCS_DIR = ./srcs/asm/
-ASM_PATHS = $(addprefix $(ASM_SRCS_DIR), $(ASM_SRCS))
-# COREWAR
-COREWAR_SRCS = corewar.c
-COREWAR_SRCS_DIR = ./srcs/corewar/
-COREWAR_PATHS = $(addprefix $(COREWAR_SRCS_DIR), $(COREWAR_SRCS))
-
+# FRAC
+FRAC_SRCS += fractol.c
+FRAC_SRCS_DIR = ./srcs/fractol/
+FRAC_PATHS = $(addprefix $(FRAC_SRCS_DIR), $(FRAC_SRCS))
 #-Objects-#
 OBJS_DIR = ./objects/
 DEBOBJS_DIR = ./debug/deb_objects/
-# ASM
-ASM_OBJS_DIR = ./objects/asm/
-ASM_OBJS = $(patsubst %.c, %.o, $(ASM_SRCS))
-ASM_OBJS_PATH = $(addprefix $(ASM_OBJS_DIR), $(ASM_OBJS))
-# COREWAR
-COREWAR_OBJS_DIR = ./objects/corewar/
-COREWAR_OBJS = $(patsubst %.c, %.o, $(COREWAR_SRCS))
-COREWAR_OBJS_PATH = $(addprefix $(COREWAR_OBJS_DIR), $(COREWAR_OBJS))
-# ASM_DEBUG
-ASM_DEBOBJS_DIR = $(DEBOBJS_DIR)
-ASM_DEBOBJS = $(patsubst %.c, %deb.o, $(ASM_SRCS))
-ASM_DEBOBJS_PATH = $(addprefix $(ASM_DEBOBJS_DIR), $(ASM_DEBOBJS))
-# COREWAR_DEBUG
-COREWAR_DEBOBJS_DIR = $(DEBOBJS_DIR)
-COREWAR_DEBOBJS = $(patsubst %.c, %deb.o, $(COREWAR_SRCS))
-COREWAR_DEBOBJS_PATH = $(addprefix $(COREWAR_DEBOBJS_DIR), $(COREWAR_DEBOBJS))
+# FRAC
+FRAC_OBJS_DIR = ./objects/fractol/
+FRAC_OBJS = $(patsubst %.c, %.o, $(FRAC_SRCS))
+FRAC_OBJS_PATH = $(addprefix $(FRAC_OBJS_DIR), $(FRAC_OBJS))
+# FRAC_DEBUG
+FRAC_DEBOBJS_DIR = $(DEBOBJS_DIR)
+FRAC_DEBOBJS = $(patsubst %.c, %deb.o, $(FRAC_SRCS))
+FRAC_DEBOBJS_PATH = $(addprefix $(FRAC_DEBOBJS_DIR), $(FRAC_DEBOBJS))
 
 #-Rules-#
-all: $(ASM_NAME) $(COREWAR_NAME)
+all: $(FRAC_NAME_MAC)
 
-debug: $(ASM_NAMEDEB) $(COREWAR_NAMEDEB)
+mac: $(FRAC_NAME_MAC)
+
+linux:  $(FRAC_NAME_LIN)
+
+debugmac: $(FRAC_NAMEDEB_MAC)
+
+debuglinux: $(FRAC_NAMEDEB_LIN)
 
 analyze:
 	@mkdir -p $(DEBUG_DIR)
@@ -201,31 +126,26 @@ $(LIB): FORCE
 $(LIBDEB): FORCE
 	@$(MKE) $(MAKE_PATH) debug
 
-#ASM && COREWAR
-$(ASM_NAME): $(LIB) $(ASM_OBJS_DIR) $(ASM_OBJS_PATH)
-	@$(CC) $(WFG) $(ASM_INCS) $(ASM_OBJS_PATH) $(LIB) -o $(ASM_NAME)
+#FRACTOL LINUX
+$(FRAC_NAME_LIN): $(LIB) $(FRAC_OBJS_DIR) $(FRAC_OBJS_PATH)
+	@$(CC) $(WFG) $(FRAC_INCS) $(FRAC_OBJS_PATH) $(LIB) $(MINILIBLINUX) -o $(FRAC_NAME)
 
-$(ASM_OBJS_DIR)%.o : $(ASM_SRCS_DIR)%.c $(ASM_HDS)
-	@$(call run_and_test, $(COMP) $(WFG) $(ASM_INCS) $< -o $@)
+$(FRAC_NAMEDEB_LIN): $(LIBDEB) $(FRAC_DEBOBJS_DIR) $(FRAC_DEBOBJS_PATH)
+	@$(DEBUG) $(WFG) $(FRAC_INCS) $(FRAC_DEBOBJS_PATH) $(LIBDEB) $(MINILIBLINUX) -o $(FRAC_NAMEDEB)
 
-$(COREWAR_NAME): $(LIB) $(COREWAR_OBJS_DIR) $(COREWAR_OBJS_PATH)
-	@$(CC) $(WFG) $(COREWAR_INCS) $(COREWAR_OBJS_PATH) $(LIB) -o $(COREWAR_NAME)
+#FRACTOL MAC
+$(FRAC_NAME_MAC): $(LIB) $(FRAC_OBJS_DIR) $(FRAC_OBJS_PATH)
+	@$(CC) $(WFG) $(FRAC_INCS) $(FRAC_OBJS_PATH) $(LIB) $(MINILIBMAC) -o $(FRAC_NAME)
 
-$(COREWAR_OBJS_DIR)%.o : $(COREWAR_SRCS_DIR)%.c $(COREWAR_HDS)
-	@$(call run_and_test, $(COMP) $(WFG) $(COREWAR_INCS) $< -o $@)
+$(FRAC_NAMEDEB_MAC): $(LIBDEB) $(FRAC_DEBOBJS_DIR) $(FRAC_DEBOBJS_PATH)
+	@$(DEBUG) $(WFG) $(FRAC_INCS) $(FRAC_DEBOBJS_PATH) $(LIBDEB) $(MINILIBMAC) -o $(FRAC_NAMEDEB)
 
-#DEBUG ASM && DEBUG COREWAR
-$(ASM_NAMEDEB): $(LIBDEB) $(ASM_DEBOBJS_DIR) $(ASM_DEBOBJS_PATH)
-	@$(DEBUG) $(WFG) $(ASM_INCS) $(ASM_DEBOBJS_PATH) $(LIBDEB) -o $(ASM_NAMEDEB)
+$(FRAC_OBJS_DIR)%.o : $(FRAC_SRCS_DIR)%.c $(FRAC_HDS)
+	@$(call run_and_test, $(COMP) $(WFG) $(FRAC_INCS) $< -o $@)
 
-$(ASM_DEBOBJS_DIR)%deb.o : $(ASM_SRCS_DIR)%.c $(ASM_HDS)
-	@$(call run_and_test, $(DEBUG) -c $(WFG) $(ASM_INCS) $< -o $@)
+$(FRAC_DEBOBJS_DIR)%deb.o : $(FRAC_SRCS_DIR)%.c $(FRAC_HDS)
+	@$(call run_and_test, $(DEBUG) -c $(WFG) $(FRAC_INCS) $< -o $@)
 
-$(COREWAR_NAMEDEB): $(LIBDEB) $(COREWAR_DEBOBJS_DIR) $(COREWAR_DEBOBJS_PATH)
-	@$(DEBUG) $(WFG) $(COREWAR_INCS) $(COREWAR_DEBOBJS_PATH) $(LIBDEB) -o $(COREWAR_NAMEDEB)
-
-$(COREWAR_DEBOBJS_DIR)%deb.o : $(COREWAR_SRCS_DIR)%.c $(COREWAR_HDS)
-	@$(call run_and_test, $(DEBUG) -c $(WFG) $(COREWAR_INCS) $< -o $@)
 
 #mkdir
 $(DEBOBJS_DIR):
@@ -234,11 +154,9 @@ $(DEBOBJS_DIR):
 $(DEBUG_DIR):
 	@mkdir -p $(DEBUG_DIR)
 
-$(ASM_OBJS_DIR):
-	@mkdir -p $(ASM_OBJS_DIR)
+$(FRAC_OBJS_DIR):
+	@mkdir -p $(FRAC_OBJS_DIR)
 
-$(COREWAR_OBJS_DIR):
-	@mkdir -p $(COREWAR_OBJS_DIR)
 
 FORCE:
 
@@ -248,14 +166,13 @@ clean:
 	@$(RMRF) $(DEBOBJS_DIR)
 	@$(RMRF) $(DEBUG_DIR)static_analyzer
 	@$(RMRF) $(DSYM)
-	@$(RMRF) *.cor
 
 fclean: clean
 	@$(MKE) $(MAKE_PATH) fclean
-	@$(RMRF) $(COREWAR_NAME)
-	@$(RMRF) $(COREWAR_NAMEDEB)
-	@$(RMRF) $(ASM_NAME)
-	@$(RMRF) $(ASM_NAMEDEB)
+	@$(RMRF) $(FRAC_NAME_LIN)
+	@$(RMRF) $(FRAC_NAME_MAC)
+	@$(RMRF) $(FRAC_NAMEDEB_LIN)
+	@$(RMRF) $(FRAC_NAMEDEB_MAC)
 	@$(RMRF) $(OBJS_DIR)
 	@$(RMRF) $(DEBUG_DIR)
 
