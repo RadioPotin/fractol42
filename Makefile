@@ -6,7 +6,7 @@
 #    By: dapinto<marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 16:47:44 by evogel            #+#    #+#              #
-#    Updated: 2019/12/18 12:52:47 by dapinto          ###   ########.fr        #
+#    Updated: 2019/12/18 13:26:47 by dapinto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -94,6 +94,7 @@ LIBDEB= $(LIB_PATH)libftdeb.a
 FRAC_SRCS += fractol.c
 FRAC_SRCS += init.c
 FRAC_SRCS += close.c
+FRAC_SRCS += argument_manager.c
 FRAC_SRCS += event_manager.c
 FRAC_SRCS_DIR = ./srcs/fractol/
 FRAC_PATHS = $(addprefix $(FRAC_SRCS_DIR), $(FRAC_SRCS))
