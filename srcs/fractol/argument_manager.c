@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 13:21:25 by dapinto           #+#    #+#             */
-/*   Updated: 2019/12/18 13:21:59 by dapinto          ###   ########.fr       */
+/*   Updated: 2019/12/18 16:17:10 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		get_arguments(int argc, char **argv)
 {
-
-	return (0);
+	(void)argc;
+	(void)argv;
+	return (-1);
 }
