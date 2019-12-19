@@ -15,7 +15,7 @@
 # define WIDTH 1920
 # define HEIGHT 1080
 # include <stdlib.h>
-# include <mlx.h>
+# include "mlx.h"
 # include <math.h>
 # include <fcntl.h>
 # include "ft_printf.h"
