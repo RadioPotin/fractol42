@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2019/12/18 13:25:50 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/06 15:22:44 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct		s_fractol
 
 t_fractol	*fetchenv(void);
 int			get_arguments(int argc, char **argv);
+char		**fractal_list(void);
 int			event_manager(int k);
 int			ft_cleanclose(void);
 

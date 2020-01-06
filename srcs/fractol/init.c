@@ -6,11 +6,23 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:10:59 by dapinto           #+#    #+#             */
-/*   Updated: 2019/12/18 12:52:22 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/06 17:08:43 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+char				**fractal_list(void)
+{
+	static char *list[3];
+
+	if (!list[0])
+	{
+		list[0] = "julia";
+		list[1] = "mandelbrot";
+	}
+	return (list);
+}
 
 t_fractol			*fetchenv(void)
 {
