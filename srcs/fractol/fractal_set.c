@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 15:28:29 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/08 17:28:10 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/08 17:40:28 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,5 @@ void	draw(t_fractalizer *f)
 		}
 		x++;
 	}
-	mlx_put_image_to_window(fractol->mlx_server_ptr, fractol->mlx_win, fractol->img_tab, 0, 0);
+	mlx_put_image_to_window(fractol->mlx_server_ptr, fractol->mlx_win, fractol->mlx_img_ptr, 0, 0);
 }

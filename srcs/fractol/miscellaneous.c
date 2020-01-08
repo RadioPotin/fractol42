@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 12:20:51 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/08 17:33:50 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/08 17:40:56 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	trigger_px(double x, double y)
 	f = fetchenv();
 	i = y * WIDTH + x;
 	if (x > 0 && x < WIDTH && y < HEIGHT && i >= 0)
-		f->img_tab[i] = (f->var.iter >= f->max_iteration) ? 0xffffff : 0xffffff;
+		f->img_tab[i] = (f->var.iter >= f->max_iteration) ? 0x000000 : 0xffffff;
 }
 
 void	usage(void)
