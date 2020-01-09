@@ -6,27 +6,29 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 15:15:06 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/09 16:16:21 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/09 18:27:10 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void				draw(t_fractalizer *f)
+static void				draw(t_fractalizer *fractal_type, int fractal)
 {
-	int x;
-	int y;
-	t_fractol *fractol;
+	int			x;
+	int			y;
+	t_fractol	*fractol;
+	t_compute	*fractal_compute;
 
 	y = 0;
 	fractol = fetchenv();
+	fractal_compute = set_compute_struct(fractal);
 	while (y < HEIGHT)
 	{
 		x = 0;
 		while (x < WIDTH)
 		{
-			set_comp_mandel(x, y);
-			(*f)();
+			(*fractal_compute)(x, y);
+			(*fractal_type)();
 			trigger_px(x, y);
 			x++;
 		}
@@ -43,7 +45,7 @@ static t_fractalizer	*fractal_holder(int fractal)
 	if (!hold[0])
 	{
 		hold[0] = &mandelbrot;
-		//hold[0] = &julia();
+		//hold[0] = &julia;
 		//hold[2] = &julia;
 		//hold[3] = &julia;
 	}
@@ -55,10 +57,9 @@ static int				ft_fractol(int fractal)
 	t_fractol		*fractol;
 
 	fractol = fetchenv();
-	initialize_variables();
+	initialize_variables(fractal);
 	fractol->fractal_type = fractal_holder(fractal);
-	draw(fractol->fractal_type);
-
+	draw(fractol->fractal_type, fractal);
 	mlx_hook(fractol->mlx_win, 2, 0, &event_manager, &fractol);
 	mlx_hook(fractol->mlx_win, 17, 0, &ft_cleanclose, &fractol);
 	mlx_loop(fractol->mlx_server_ptr);

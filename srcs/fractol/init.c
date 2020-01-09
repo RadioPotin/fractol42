@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:10:59 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/09 16:11:28 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/09 17:47:31 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,6 @@ char				**fractal_list(void)
 		list[1] = "julia";
 	}
 	return (list);
-}
-
-void				initialize_variables(void)
-{
-	t_fractol *frac;
-
-	frac = fetchenv();
-	/*
-	frac->x1 = set_x1(fractal);
-	frac->x2 = set_x2(fractal);
-	frac->y1 = set_y1(fractal);
-	frac->y2 = set_y2(fractal);
-	frac->max_iteration = set_maxiter(fractal);
-	frac->zoom = set_zoom(fractal);
-	*/
-	frac->x1 = -2.1;
-	frac->y1 = -1.2;
-	frac->max_iteration = 50;
-	frac->zoom = 300;
 }
 
 t_fractol			*fetchenv(void)

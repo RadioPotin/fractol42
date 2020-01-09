@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/09 15:31:21 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/09 18:27:12 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "ft_printf.h"
 
 typedef int			(*t_fractalizer)(void);
+typedef void			(*t_compute)(int, int);
 
 typedef struct	s_eve
 {
@@ -58,18 +59,20 @@ typedef struct		s_fractol
 	double		y1;
 }					t_fractol;
 
-t_fractol	*fetchenv(void);
-void		trigger_px(double x, double y);
 void		usage(void);
-void		initialize_variables(void);
-void		set_comp_mandel(int x, int y);
-void		print_fractal_list(void);
-int			get_arguments(int argc, char **argv);
 char		**fractal_list(void);
-int			event_manager(int k);
+int			get_arguments(int argc, char **argv);
+t_fractol	*fetchenv(void);
 int			ft_cleanclose(void);
+int			event_manager(int k);
+void		print_fractal_list(void);
+
 int			julia(void);
 int			mandelbrot(void);
+
+void		initialize_variables(int fractal_type);
+t_compute	*set_compute_struct(int fractal);
+void		trigger_px(double x, double y);
 
 
 #endif
