@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractal_set.c                                      :+:      :+:    :+:   */
+/*   fractal_types.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 15:28:29 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/09 16:16:27 by dapinto          ###   ########.fr       */
+/*   Created: 2020/01/09 12:43:39 by dapinto           #+#    #+#             */
+/*   Updated: 2020/01/09 15:56:28 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	set_comp_mandel(int x, int y)
+int		mandelbrot(void)
 {
-	t_fractol *f;
+	t_fractol	*f;
+	double		tmp;
+	int			n;
 
 	f = fetchenv();
-	ft_bzero(&f->var, sizeof(t_comp));
-	f->var.c_r = (double)x / f->zoom + f->x1;
-	f->var.c_i = (double)y / f->zoom + f->y1;
+	n = f->var.z_r * f->var.z_r + f->var.z_i * f->var.z_i;
+	while (n < 4 && f->var.iter < f->max_iteration)
+	{
+		tmp = f->var.z_r * f->var.z_r - f->var.z_i * f->var.z_i + f->var.c_r;
+		f->var.z_i = 2.0 * f->var.z_i * f->var.z_r + f->var.c_i;
+		f->var.z_r = tmp;
+		f->var.iter++;
+		n = f->var.z_r * f->var.z_r + f->var.z_i * f->var.z_i;
+	}
+	return (0);
+}
+
+int		julia(void)
+{
+	return (0);
 }
 

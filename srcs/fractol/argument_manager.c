@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 13:21:25 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/08 17:13:02 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/09 14:40:03 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,7 @@ static int		fetch_fractal(int argc, char **argv)
 	{
 		if (!ft_strchr(argv[i], '-'))
 			if ((j = look_up(3, f_list, argv[i])) >= 0)
-			{
-			ft_printf("FRACTAL SELECTER = %d\n", j);
 				return (j);
-				}
 		i++;
 	}
 	return (-1);

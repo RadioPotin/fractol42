@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:10:59 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/08 17:31:52 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/09 16:11:28 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ void				initialize_variables(void)
 	frac->zoom = set_zoom(fractal);
 	*/
 	frac->x1 = -2.1;
-	frac->x2 = 0.6;
 	frac->y1 = -1.2;
-	frac->y2 = 1.2;
 	frac->max_iteration = 50;
 	frac->zoom = 300;
 }

@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/08 17:15:01 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/09 15:31:21 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ typedef struct	s_eve
 
 typedef struct		s_compute
 {
-	double	x;
-	double	y;
 	double	c_r;
 	double	c_i;
 	double	z_r;
@@ -54,20 +52,17 @@ typedef struct		s_fractol
 	int			max_iteration;
 	int			zoom;
 	t_fractalizer	*fractal_type;
-	t_eve		eve;
 	t_comp		var;
+	t_eve		eve;
 	double		x1;
-	double		x2;
 	double		y1;
-	double		y2;
 }					t_fractol;
-
 
 t_fractol	*fetchenv(void);
 void		trigger_px(double x, double y);
 void		usage(void);
-void		draw(t_fractalizer *f);
 void		initialize_variables(void);
+void		set_comp_mandel(int x, int y);
 void		print_fractal_list(void);
 int			get_arguments(int argc, char **argv);
 char		**fractal_list(void);

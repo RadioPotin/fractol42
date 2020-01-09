@@ -6,7 +6,7 @@
 #    By: dapinto<marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 16:47:44 by evogel            #+#    #+#              #
-#    Updated: 2020/01/08 17:09:20 by dapinto          ###   ########.fr        #
+#    Updated: 2020/01/09 12:45:01 by dapinto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,6 +97,7 @@ LIBDEB= $(LIB_PATH)libftdeb.a
 # FRAC
 FRAC_SRCS += fractol.c
 FRAC_SRCS += fractal_set.c
+FRAC_SRCS += fractal_types.c
 FRAC_SRCS += init.c
 FRAC_SRCS += close.c
 FRAC_SRCS += argument_manager.c
