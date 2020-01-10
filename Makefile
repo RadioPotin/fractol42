@@ -6,7 +6,7 @@
 #    By: dapinto<marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 16:47:44 by evogel            #+#    #+#              #
-#    Updated: 2020/01/09 17:48:09 by dapinto          ###   ########.fr        #
+#    Updated: 2020/01/10 18:26:39 by dapinto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,10 +99,12 @@ FRAC_SRCS += fractol.c
 FRAC_SRCS += fractal_set.c
 FRAC_SRCS += fractal_types.c
 FRAC_SRCS += init.c
+FRAC_SRCS += colour_palettes.c
 FRAC_SRCS += variable_init.c
-FRAC_SRCS += close.c
 FRAC_SRCS += argument_manager.c
 FRAC_SRCS += event_manager.c
+FRAC_SRCS += event_1.c
+FRAC_SRCS += event_2.c
 FRAC_SRCS += miscellaneous.c
 FRAC_SRCS_DIR = ./srcs/fractol/
 FRAC_PATHS = $(addprefix $(FRAC_SRCS_DIR), $(FRAC_SRCS))
@@ -157,7 +159,7 @@ $(FRAC_DEBOBJS_DIR_LIN)%deb.o : $(FRAC_SRCS_DIR)%.c $(FRAC_HDS)
 
 #FRACTOL MAC
 $(FRAC_NAME): $(LIB) $(FRAC_OBJS_DIR) $(FRAC_OBJS_PATH)
-	@$(CC) $(WFG) $(FRAC_INCS) $(FRAC_OBJS_PATH) $(LIB) $(MINILIBMAC) -o $(FRAC_NAME)
+	@$(CC) -Ofast $(WFG) $(FRAC_INCS) $(FRAC_OBJS_PATH) $(LIB) $(MINILIBMAC) -o $(FRAC_NAME)
 
 $(FRAC_NAMEDEB): $(LIBDEB) $(FRAC_DEBOBJS_DIR) $(FRAC_DEBOBJS_PATH)
 	@$(DEBUG) $(WFG) $(FRAC_INCS) $(FRAC_DEBOBJS_PATH) $(LIBDEB) $(MINILIBMAC) -o $(FRAC_NAMEDEB)

@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 15:28:29 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/09 18:11:29 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/10 14:37:43 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,20 @@ static void		set_comp_mandel(int x, int y)
 
 	f = fetchenv();
 	ft_bzero(&f->var, sizeof(t_comp));
-	f->var.c_r = (double)x / f->zoom + f->x1;
-	f->var.c_i = (double)y / f->zoom + f->y1;
+	f->var.c_r = (double)x / f->zoom + f->x1 + f->trans_x;
+	f->var.c_i = (double)y / f->zoom + f->y1 + f->trans_y;
+}
+
+static void		set_comp_julia(int x, int y)
+{
+	t_fractol *f;
+
+	f = fetchenv();
+	ft_bzero(&f->var, sizeof(t_comp));
+	f->var.z_r = (double)x / f->zoom + f->x1 + f->trans_x;
+	f->var.z_i = (double)y / f->zoom + f->y1 + f->trans_y;
+	f->var.c_r = f->x1;
+	f->var.c_i = f->y1;
 }
 
 t_compute		*set_compute_struct(int fractal)
@@ -29,6 +41,7 @@ t_compute		*set_compute_struct(int fractal)
 	if (!compute_struct_tab[0])
 	{
 		compute_struct_tab[0] = &set_comp_mandel;
+		compute_struct_tab[1] = &set_comp_julia;
 	}
 	return (&compute_struct_tab[fractal]);
 }

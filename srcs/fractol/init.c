@@ -6,13 +6,13 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:10:59 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/09 17:47:31 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/10 17:22:01 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-char				**fractal_list(void)
+char		**fractal_list(void)
 {
 	static char *list[3];
 
@@ -24,7 +24,7 @@ char				**fractal_list(void)
 	return (list);
 }
 
-t_fractol			*fetchenv(void)
+t_fractol	*fetchenv(void)
 {
 	static t_fractol *fractol = NULL;
 

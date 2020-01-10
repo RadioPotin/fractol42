@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/09 18:27:12 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/01/10 18:26:56 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,23 @@
 # include "ft_printf.h"
 
 typedef int			(*t_fractalizer)(void);
-typedef void			(*t_compute)(int, int);
+typedef void		(*t_compute)(int, int);
+typedef int			(*t_event)(int);
+typedef int			*(*t_palette)(void);
 
 typedef struct	s_eve
 {
 	int			key;
-	int			state;
-	int			event;
-	int			trans_x;
-	int			trans_y;
+	int			palet;
 }				t_eve;
 
 typedef struct		s_compute
 {
+	int		iter;
 	double	c_r;
 	double	c_i;
 	double	z_r;
 	double	z_i;
-	int		iter;
 }					t_comp;
 
 typedef struct		s_fractol
@@ -50,29 +49,39 @@ typedef struct		s_fractol
 	int			endian;
 	int			bpp;
 	int			size_line;
+	int			requested_fractal;
 	int			max_iteration;
 	int			zoom;
-	t_fractalizer	*fractal_type;
-	t_comp		var;
 	t_eve		eve;
+	t_comp		var;
+	double		trans_x;
+	double		trans_y;
 	double		x1;
 	double		y1;
+	t_fractalizer	*fractal_type;
 }					t_fractol;
 
-void		usage(void);
 char		**fractal_list(void);
 int			get_arguments(int argc, char **argv);
+
 t_fractol	*fetchenv(void);
-int			ft_cleanclose(void);
+
+int			do_nothing(int k);
+int			ft_cleanclose(int k);
+int			ft_translate(int k);
 int			event_manager(int k);
-void		print_fractal_list(void);
+int			mouse_mvt(int x, int y);
+int			mouse_zm(int key, int x, int y);
+
+int			*colour_tab(int palet);
 
 int			julia(void);
 int			mandelbrot(void);
 
+void		draw(t_fractalizer *f, int fractal);
+
 void		initialize_variables(int fractal_type);
 t_compute	*set_compute_struct(int fractal);
-void		trigger_px(double x, double y);
 
 
 #endif

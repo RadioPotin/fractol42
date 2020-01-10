@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close.c                                            :+:      :+:    :+:   */
+/*   event_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/18 12:12:22 by dapinto           #+#    #+#             */
-/*   Updated: 2019/12/18 12:33:25 by dapinto          ###   ########.fr       */
+/*   Created: 2020/01/10 17:10:57 by dapinto           #+#    #+#             */
+/*   Updated: 2020/01/10 17:11:10 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		ft_cleanclose(void)
+int		mouse_zm(int k, int x, int y)
 {
-	t_fractol	*fractol;
+	(void)k;
+	(void)x;
+	(void)y;
 
-	fractol = fetchenv();
-	mlx_destroy_image(fractol->mlx_server_ptr, fractol->mlx_img_ptr);
-	free(fractol);
-	exit(0);
+	return (0);
+}
+
+int		mouse_mvt(int x, int y)
+{
+	(void)x;
+	(void)y;
+	return (0);
 }
