@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 15:15:06 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/10 17:20:54 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/02/06 16:12:09 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,9 @@ static int				ft_fractol(int fractal)
 	draw(fractol->fractal_type, fractal);
 
 	mlx_hook(fractol->mlx_win, 2, 0, &event_manager, &fractol);
-	//mlx_hook(fractol->mlx_win, 6, 0, &mouse_mvt, &fractol);
+	mlx_hook(fractol->mlx_win, 6, 0, &mouse_mvt, &fractol);
 	mlx_hook(fractol->mlx_win, 17, 0, &ft_cleanclose, &fractol);
-
-	//mlx_loop_hook(fractol->mlx_win, mouse_mvt, &fractol);
+	mlx_loop_hook(fractol->mlx_server_ptr, mouse_mvt, &fractol);
 	//mlx_mouse_hook(fractol->mlx_win, mouse_zm, fractol);
 
 	mlx_loop(fractol->mlx_server_ptr);

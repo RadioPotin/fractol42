@@ -6,11 +6,26 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 12:20:51 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/10 17:29:53 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/02/06 16:12:20 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void				clear_image(void)
+{
+	t_fractol	*f;
+	int			i;
+
+	i = 0;
+	f = fetchenv();
+	while (i < WIDTH * HEIGHT)
+	{
+		if (f->img_tab[i] != 0)
+			f->img_tab[i] = 0;
+		i++;
+	}
+}
 
 static void			trigger_px(double x, double y)
 {

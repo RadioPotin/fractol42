@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/10 18:26:56 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/02/06 15:35:37 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int			mouse_mvt(int x, int y);
 int			mouse_zm(int key, int x, int y);
 
 int			*colour_tab(int palet);
+void		clear_image(void);
 
 int			julia(void);
 int			mandelbrot(void);
