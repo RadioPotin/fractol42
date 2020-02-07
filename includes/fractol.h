@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2020/02/06 15:35:37 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/02/07 15:47:59 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "mlx.h"
 # include <math.h>
 # include <fcntl.h>
+# include <pthread.h>
 # include "ft_printf.h"
 
 typedef int			(*t_fractalizer)(void);
@@ -42,47 +43,55 @@ typedef struct		s_compute
 
 typedef struct		s_fractol
 {
-	void		*mlx_server_ptr;
-	void		*mlx_img_ptr;
-	void		*mlx_win;
-	int			*img_tab;
-	int			endian;
-	int			bpp;
-	int			size_line;
-	int			requested_fractal;
-	int			max_iteration;
-	int			zoom;
-	t_eve		eve;
-	t_comp		var;
-	double		trans_x;
-	double		trans_y;
-	double		x1;
-	double		y1;
+	void			*mlx_server_ptr;
+	void			*mlx_img_ptr;
+	void			*mlx_win;
+	int				*img_tab;
+	int				endian;
+	int				bpp;
+	int				size_line;
+	int				requested_fractal;
+	int				max_iteration;
+	int				zoom;
+	t_eve			eve;
+	t_comp			var;
+	double			trans_x;
+	double			trans_y;
+	double			x1;
+	double			y1;
+	double			julia_r;
+	double			julia_i;
 	t_fractalizer	*fractal_type;
 }					t_fractol;
 
-char		**fractal_list(void);
-int			get_arguments(int argc, char **argv);
+char			**fractal_list(void);
+int				get_arguments(int argc, char **argv);
+void			usage(void);
+void			print_fractal_list(void);
 
-t_fractol	*fetchenv(void);
+t_fractol		*fetchenv(void);
+t_fractalizer	*fractal_holder(int fractal);
 
-int			do_nothing(int k);
-int			ft_cleanclose(int k);
-int			ft_translate(int k);
-int			event_manager(int k);
-int			mouse_mvt(int x, int y);
-int			mouse_zm(int key, int x, int y);
+int				do_nothing(int k);
+int				mouse_zm(int key, int x, int y);
+int				mouse_mvt(int x, int y);
+int				event_manager(int k);
+int				ft_cleanclose(int k);
+int				ft_translate(int k);
+int				ft_switch(int k);
+int				ft_reset(int k);
+int				ft_zoom(int k);
 
-int			*colour_tab(int palet);
-void		clear_image(void);
+int				*colour_tab(int palet);
+void			clear_image(void);
 
-int			julia(void);
-int			mandelbrot(void);
+int				julia(void);
+int				mandelbrot(void);
 
-void		draw(t_fractalizer *f, int fractal);
+void			draw(t_fractalizer *f, int fractal);
 
-void		initialize_variables(int fractal_type);
-t_compute	*set_compute_struct(int fractal);
+void			initialize_variables(int fractal_type);
+t_compute		*set_compute_struct(int fractal);
 
 
 #endif
