@@ -6,14 +6,14 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2020/02/07 15:47:59 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/02/25 12:38:39 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1080
+# define HEIGHT 720
 # include <stdlib.h>
 # include "mlx.h"
 # include <math.h>
@@ -30,6 +30,7 @@ typedef struct	s_eve
 {
 	int			key;
 	int			palet;
+	int			lock;
 }				t_eve;
 
 typedef struct		s_compute
@@ -80,13 +81,15 @@ int				ft_cleanclose(int k);
 int				ft_translate(int k);
 int				ft_switch(int k);
 int				ft_reset(int k);
-int				ft_zoom(int k);
+int				lockmvt(int k);
 
 int				*colour_tab(int palet);
 void			clear_image(void);
 
 int				julia(void);
 int				mandelbrot(void);
+int				burningship(void);
+
 
 void			draw(t_fractalizer *f, int fractal);
 

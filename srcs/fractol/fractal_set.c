@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 15:28:29 by dapinto           #+#    #+#             */
-/*   Updated: 2020/02/07 11:02:13 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/02/25 10:49:56 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,25 @@ static void		set_comp_julia(int x, int y)
 	f->var.c_i = f->julia_i;
 }
 
+static void		set_comp_burningship(int x, int y)
+{
+	t_fractol *f;
+
+	f = fetchenv();
+	ft_bzero(&f->var, sizeof(t_comp));
+	f->var.c_r = (double)x / f->zoom + f->x1 + f->trans_x;
+	f->var.c_i = (double)y / f->zoom + f->y1 + f->trans_y;
+}
+
 t_compute		*set_compute_struct(int fractal)
 {
-	static t_compute compute_struct_tab[2];
+	static t_compute compute_struct_tab[3];
 
 	if (!compute_struct_tab[0])
 	{
 		compute_struct_tab[0] = &set_comp_mandel;
 		compute_struct_tab[1] = &set_comp_julia;
+		compute_struct_tab[2] = &set_comp_burningship;
 	}
 	return (&compute_struct_tab[fractal]);
 }

@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:10:16 by dapinto           #+#    #+#             */
-/*   Updated: 2020/02/07 15:13:56 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/02/25 12:45:25 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int		ft_cleanclose(int key)
 	mlx_destroy_image(fractol->mlx_server_ptr, fractol->mlx_img_ptr);
 	free(fractol);
 	exit(0);
+	return (0);
 }
 
 int		ft_translate(int k)
@@ -36,29 +37,6 @@ int		ft_translate(int k)
 	return (0);
 }
 
-int		ft_zoom(int k)
-{
-	t_fractol *f;
-
-	f = fetchenv();
-	if (k == 116)
-	{
-		f->x1 = (f->trans_x / (double)f->zoom + f->x1) - (f->trans_x / ((double)f->zoom * 1.25));
-		f->y1 = (f->trans_y / (double)f->zoom + f->y1) - (f->trans_y / ((double)f->zoom * 1.25));
-		f->zoom *= 1.25;
-		draw(f->fractal_type, f->requested_fractal);
-		return (1);
-	}
-	else
-	{
-		f->x1 = (f->trans_x / (double)f->zoom + f->x1) + (f->trans_x / ((double)f->zoom / 1.25));
-		f->y1 = (f->trans_y / (double)f->zoom + f->y1) + (f->trans_y / ((double)f->zoom / 1.25));
-		f->zoom /= 1.25;
-		draw(f->fractal_type, f->requested_fractal);
-	}
-	return (1);
-}
-
 int		switch_palette(int k)
 {
 	(void)k;
@@ -68,5 +46,17 @@ int		switch_palette(int k)
 int		do_nothing(int somekey)
 {
 	(void)somekey;
+	return (0);
+}
+
+int		lockmvt(int k)
+{
+	t_fractol *f;
+
+	f = fetchenv();
+	if (f->eve.lock)
+		f->eve.lock = k - k;
+	else
+		f->eve.lock = k;
 	return (0);
 }

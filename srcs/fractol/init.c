@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:10:59 by dapinto           #+#    #+#             */
-/*   Updated: 2020/01/10 17:22:01 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/02/25 11:41:07 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char		**fractal_list(void)
 	{
 		list[0] = "mandelbrot";
 		list[1] = "julia";
+		list[2] = "burningship";
 	}
 	return (list);
 }
@@ -41,6 +42,7 @@ t_fractol	*fetchenv(void)
 				HEIGHT, "Fract'ol");
 		ft_bzero(&fractol->eve, sizeof(t_eve));
 		ft_bzero(&fractol->var, sizeof(t_comp));
+		fractol->eve.lock = 1;
 	}
 	return (fractol);
 }

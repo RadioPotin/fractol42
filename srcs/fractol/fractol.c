@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 15:15:06 by dapinto           #+#    #+#             */
-/*   Updated: 2020/02/07 15:48:22 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/02/25 11:14:24 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_fractalizer	*fractal_holder(int fractal)
 	{
 		hold[0] = &mandelbrot;
 		hold[1] = &julia;
-		//hold[2] = &julia;
+		hold[2] = &burningship;
 		//hold[3] = &julia;
 	}
 	return (&hold[fractal]);
@@ -32,7 +32,7 @@ static void		mlx_events(t_fractol *fractol)
 	mlx_hook(fractol->mlx_win, 6, 0, &mouse_mvt, &fractol);
 	mlx_hook(fractol->mlx_win, 17, 0, ft_cleanclose, &fractol);
 	mlx_loop_hook(fractol->mlx_server_ptr, mouse_mvt, &fractol);
-	//mlx_mouse_hook(fractol->mlx_win, mouse_zm, fractol);
+	mlx_mouse_hook(fractol->mlx_win, mouse_zm, fractol);
 }
 
 static int		ft_fractol(int fractal)

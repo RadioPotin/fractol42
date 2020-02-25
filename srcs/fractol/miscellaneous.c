@@ -6,7 +6,7 @@
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 12:20:51 by dapinto           #+#    #+#             */
-/*   Updated: 2020/02/07 11:18:32 by dapinto          ###   ########.fr       */
+/*   Updated: 2020/02/25 12:32:12 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void			trigger_px(double x, double y)
 	int			*colour_table;
 
 	f = fetchenv();
-	colour_table = colour_tab(2);
+	colour_table = colour_tab(1);
 	i = 0 + y * WIDTH + x;
 	if (x >= 0 && f->var.iter < f->max_iteration)
 		f->img_tab[i] = colour_table[f->var.iter % 16];
