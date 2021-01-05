@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-int		ft_reset(int k)
+int ft_reset(int k)
 {
 	t_fractol *f;
 
@@ -23,26 +23,29 @@ int		ft_reset(int k)
 	return (1);
 }
 
-int		ft_switch(int k)
+int ft_switch(int k)
 {
 	t_fractol *fractol;
 
 	k -= 82;
-	fractol = fetchenv();
-	fractol->requested_fractal = k;
-	initialize_variables(k);
-	fractol->fractal_type = fractal_holder(k);
-	draw(fractol->fractal_type, k);
+	if (k < 3)
+	{
+		fractol = fetchenv();
+		fractol->requested_fractal = k;
+		initialize_variables(k);
+		fractol->fractal_type = fractal_holder(k);
+		draw(fractol->fractal_type, k);
+	}
 	return (1);
 }
 
-int		mouse_zm(int k, int x, int y)
+int mouse_zm(int k, int x, int y)
 {
 	t_fractol *f;
 
 	f = fetchenv();
 	if ((k == 1 || k == 2 || k == 4 || k == 5) &&
-			(x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT))
+		(x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT))
 	{
 		if (k == 2)
 		{
@@ -61,13 +64,12 @@ int		mouse_zm(int k, int x, int y)
 	return (1);
 }
 
-int		mouse_mvt(int x, int y)
+int mouse_mvt(int x, int y)
 {
 	t_fractol *f;
 
 	f = fetchenv();
-	if (!f->eve.lock && f->requested_fractal == 1 && x > 0 && x < WIDTH && y > 0
-			&& y < HEIGHT)
+	if (!f->eve.lock && f->requested_fractal == 1 && x > 0 && x < WIDTH && y > 0 && y < HEIGHT)
 	{
 		f->julia_r = (double)x / f->zoom + f->x1 + f->trans_x;
 		f->julia_i = (double)y / f->zoom + f->y1 + f->trans_y;

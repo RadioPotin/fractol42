@@ -21,7 +21,6 @@ t_fractalizer	*fractal_holder(int fractal)
 		hold[0] = &mandelbrot;
 		hold[1] = &julia;
 		hold[2] = &burningship;
-		//hold[3] = &julia;
 	}
 	return (&hold[fractal]);
 }

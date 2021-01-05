@@ -12,8 +12,8 @@
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
-# define WIDTH 1080
-# define HEIGHT 720
+# define WIDTH 1920
+# define HEIGHT 1080
 # include <stdlib.h>
 # include "mlx.h"
 # include <math.h>

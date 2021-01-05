@@ -52,7 +52,7 @@ void				usage(void)
 void				print_fractal_list(void)
 {
 	ft_printf("Here is the list of all available fractals to display:\n\t");
-	ft_printf("1. Mandelbrot.\n\t2. Julia.\n");
+	ft_printf("1. Mandelbrot.\n\t2. Julia.\n\t3. Burningship\n");
 }
 
 static void			trigger_px(double x, double y)
