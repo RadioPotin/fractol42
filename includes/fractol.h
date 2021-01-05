@@ -53,7 +53,7 @@ typedef struct		s_fractol
 	int				size_line;
 	int				requested_fractal;
 	int				max_iteration;
-	int				zoom;
+	int				zm;
 	t_eve			eve;
 	t_comp			var;
 	double			trans_x;
@@ -80,6 +80,7 @@ int				event_manager(int k);
 int				ft_cleanclose(int k);
 int				ft_translate(int k);
 int				ft_switch(int k);
+int				switch_palette(int k);
 int				ft_reset(int k);
 int				lockmvt(int k);
 

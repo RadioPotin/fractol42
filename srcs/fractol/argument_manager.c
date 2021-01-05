@@ -48,7 +48,7 @@ static int		fetch_fractal(int argc, char **argv)
 	return (-1);
 }
 
-int		get_arguments(int argc, char **argv)
+int				get_arguments(int argc, char **argv)
 {
 	int fractal;
 

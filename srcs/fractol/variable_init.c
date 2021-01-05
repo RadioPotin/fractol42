@@ -85,7 +85,7 @@ void			initialize_variables(int fractal)
 		frac->julia_i = frac->y1;
 	}
 	frac->max_iteration = set_maxiter(fractal);
-	frac->zoom = set_zoom(fractal);
+	frac->zm = set_zoom(fractal);
 	frac->trans_x = set_trans_x(fractal);
 	frac->trans_y = set_trans_y(fractal);
 }

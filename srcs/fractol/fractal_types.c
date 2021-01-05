@@ -67,4 +67,3 @@ int		burningship(void)
 	}
 	return (0);
 }
-

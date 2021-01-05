@@ -18,7 +18,7 @@ int		*miko_vanille_fraise(void)
 
 	if (!colour_array[0])
 	{
-		colour_array[0] = 0xffff7d ;
+		colour_array[0] = 0xffff7d;
 		colour_array[1] = 0xffee7d;
 		colour_array[2] = 0xffdf7e;
 		colour_array[3] = 0xffcf7e;
@@ -86,7 +86,6 @@ int		*are_you_ogay(void)
 		colour_array[13] = 0x482183;
 		colour_array[14] = 0x542C8A;
 		colour_array[15] = 0x7353A6;
-
 	}
 	return (colour_array);
 }

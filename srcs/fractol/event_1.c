@@ -39,7 +39,12 @@ int		ft_translate(int k)
 
 int		switch_palette(int k)
 {
+	t_fractol *f;
+
 	(void)k;
+	f = fetchenv();
+	f->eve.palet = (f->eve.palet + 1 < 3) ? f->eve.palet + 1 : 0;
+	draw(f->fractal_type, f->requested_fractal);
 	return (0);
 }
 

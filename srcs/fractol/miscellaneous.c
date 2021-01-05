@@ -62,7 +62,7 @@ static void			trigger_px(double x, double y)
 	int			*colour_table;
 
 	f = fetchenv();
-	colour_table = colour_tab(1);
+	colour_table = colour_tab(f->eve.palet);
 	i = 0 + y * WIDTH + x;
 	if (x >= 0 && f->var.iter < f->max_iteration)
 		f->img_tab[i] = colour_table[f->var.iter % 16];

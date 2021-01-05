@@ -29,6 +29,7 @@ static t_event	*fetchevent(void)
 	{
 		store_event(&holder[0], &do_nothing, 160);
 		store_event(&holder[53], &ft_cleanclose, 1);
+		store_event(&holder[8], &switch_palette, 1);
 		store_event(&holder[49], &lockmvt, 1);
 		store_event(&holder[82], &ft_switch, 10);
 		store_event(&holder[123], &ft_translate, 4);
@@ -37,16 +38,17 @@ static t_event	*fetchevent(void)
 	return (holder);
 }
 
-static int	is_event(int k)
+static int		is_event(int k)
 {
-	if (k == 53 || k == 49 || k == 123 || k == 124 || k == 125 || k == 126 || k == 115 || k == 82 || k == 83 || k == 84 || k == 85
-			|| k == 86 || k == 87 || k == 88 || k == 89 || k == 90 || k == 91
-			|| k == 92 || k == 1 || k == 2 || k == 5 || k == 4)
+	if (k == 53 || k == 49 || k == 123 || k == 124 || k == 125 || k == 126
+			|| k == 115 || k == 82 || k == 83 || k == 84 || k == 85
+				|| k == 86 || k == 87 || k == 88 || k == 89 || k == 90
+				|| k == 91 || k == 92 || k == 1 || k == 2 || k == 5 || k == 4 || k == 8)
 		return (1);
 	return (0);
 }
 
-int		event_manager(int k)
+int				event_manager(int k)
 {
 	t_fractol	*fractol;
 	t_event		*event_holder;
