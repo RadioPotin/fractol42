@@ -95,6 +95,9 @@ int				burningship(void);
 void			draw(t_fractalizer *f, int fractal);
 
 void			initialize_variables(int fractal_type);
+void			set_comp_mandel(int x, int y);
+void			set_comp_julia(int x, int y);
+void			set_comp_burningship(int x, int y);
 t_compute		*set_compute_struct(int fractal);
 
 

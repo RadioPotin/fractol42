@@ -97,6 +97,7 @@ LIBDEB= $(LIB_PATH)libftdeb.a
 # FRAC
 FRAC_SRCS += fractol.c
 FRAC_SRCS += fractal_set.c
+FRAC_SRCS += fractal_set_1.c
 FRAC_SRCS += fractal_types.c
 FRAC_SRCS += init.c
 FRAC_SRCS += colour_palettes.c
