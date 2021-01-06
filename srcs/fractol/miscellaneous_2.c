@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 12:20:51 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/06 16:24:48 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/06 16:44:12 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void            menudisplay(void)
     t_fractol *f;
 
     f = fetchenv();
-    
+    mlx_string_put(f->mlx_server_ptr, f->mlx_win, WIDTH * 0.800, 300, 0xffffff, "Close window: ESC or RED CROSS.");
 }

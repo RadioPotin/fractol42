@@ -6,13 +6,13 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 17:30:40 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/06 16:24:48 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/06 16:40:35 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static double	set_x1(int fractal)
+double		set_x1(int fractal)
 {
 	double	x1_values[9];
 
@@ -23,7 +23,7 @@ static double	set_x1(int fractal)
 	return (x1_values[fractal]);
 }
 
-static double	set_y1(int fractal)
+double		set_y1(int fractal)
 {
 	double	y1_values[9];
 
@@ -34,7 +34,7 @@ static double	set_y1(int fractal)
 	return (y1_values[fractal]);
 }
 
-static int	set_maxiter(int fractal)
+int			set_maxiter(int fractal)
 {
 	int		maxiter_values[9];
 
@@ -45,7 +45,7 @@ static int	set_maxiter(int fractal)
 	return (maxiter_values[fractal]);
 }
 
-static int	set_zoom(int fractal)
+int			set_zoom(int fractal)
 {
 	int		zoom_values[9];
 
@@ -56,7 +56,7 @@ static int	set_zoom(int fractal)
 	return (zoom_values[fractal]);
 }
 
-double			set_trans_x(int fractal)
+double		set_trans_x(int fractal)
 {
 	double	trans_x_values[9];
 
@@ -67,7 +67,7 @@ double			set_trans_x(int fractal)
 	return (trans_x_values[fractal]);
 }
 
-double			set_trans_y(int fractal)
+double		set_trans_y(int fractal)
 {
 	double	trans_y_values[9];
 

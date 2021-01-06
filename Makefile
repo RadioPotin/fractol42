@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dapinto<marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 16:47:44 by evogel            #+#    #+#              #
-#    Updated: 2020/02/07 11:11:40 by dapinto          ###   ########.fr        #
+#    Updated: 2021/01/06 16:37:07 by dapinto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,8 +96,8 @@ LIBDEB= $(LIB_PATH)libftdeb.a
 #-Sources and paths-#
 # FRAC
 FRAC_SRCS += fractol.c
-FRAC_SRCS += fractal_set.c
 FRAC_SRCS += fractal_set_1.c
+FRAC_SRCS += fractal_set_2.c
 FRAC_SRCS += fractal_types.c
 FRAC_SRCS += init.c
 FRAC_SRCS += colour_palettes.c
@@ -106,7 +106,8 @@ FRAC_SRCS += argument_manager.c
 FRAC_SRCS += event_manager.c
 FRAC_SRCS += event_1.c
 FRAC_SRCS += event_2.c
-FRAC_SRCS += miscellaneous.c
+FRAC_SRCS += miscellaneous_1.c
+FRAC_SRCS += miscellaneous_2.c
 FRAC_SRCS_DIR = ./srcs/fractol/
 FRAC_PATHS = $(addprefix $(FRAC_SRCS_DIR), $(FRAC_SRCS))
 #-Objects-#

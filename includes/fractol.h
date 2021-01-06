@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2020/02/25 12:38:39 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/06 16:40:35 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,14 @@ int				lockmvt(int k);
 
 int				*colour_tab(int palet);
 void			clear_image(void);
+void            menudisplay(void);
+
+double			set_x1(int fractal);
+double			set_y1(int fractal);
+int				set_maxiter(int fractal);
+int				set_zoom(int fractal);
+double			set_trans_y(int fractal);
+double			set_trans_x(int fractal);
 
 int				julia(void);
 int				mandelbrot(void);
