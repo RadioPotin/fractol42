@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractal_set_2.c                                    :+:      :+:    :+:   */
+/*   miscellaneous_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapinto <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 15:28:29 by dapinto           #+#    #+#             */
-/*   Updated: 2020/02/25 10:49:56 by dapinto          ###   ########.fr       */
+/*   Created: 2020/01/07 12:20:51 by dapinto           #+#    #+#             */
+/*   Updated: 2020/02/25 12:32:12 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "fractol.h"
 
-t_compute		*set_compute_struct(int fractal)
+t_fractalizer	*fractal_holder(int fractal)
 {
-	static t_compute compute_struct_tab[4];
+	static t_fractalizer hold[9];
 
-	if (!compute_struct_tab[0])
+	if (!hold[0])
 	{
-		compute_struct_tab[0] = &set_comp_mandel;
-		compute_struct_tab[1] = &set_comp_julia;
-		compute_struct_tab[2] = &set_comp_burningship;
-		compute_struct_tab[3] = &set_comp_mandel;
+		hold[0] = &mandelbrot;
+		hold[1] = &julia;
+		hold[2] = &burningship;
+		hold[3] = &mandelbrot_flower;
 	}
-	return (&compute_struct_tab[fractal]);
+	return (&hold[fractal]);
 }

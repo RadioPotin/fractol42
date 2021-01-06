@@ -47,3 +47,21 @@ t_fractol	*fetchenv(void)
 	}
 	return (fractol);
 }
+
+void			initialize_variables(int fractal)
+{
+	t_fractol	*frac;
+
+	frac = fetchenv();
+	frac->x1 = set_x1(fractal);
+	frac->y1 = set_y1(fractal);
+	if (fractal == 1)
+	{
+		frac->julia_r = frac->x1;
+		frac->julia_i = frac->y1;
+	}
+	frac->max_iteration = set_maxiter(fractal);
+	frac->zm = set_zoom(fractal);
+	frac->trans_x = set_trans_x(fractal);
+	frac->trans_y = set_trans_y(fractal);
+}

@@ -12,20 +12,6 @@
 
 #include "fractol.h"
 
-t_fractalizer	*fractal_holder(int fractal)
-{
-	static t_fractalizer hold[9];
-
-	if (!hold[0])
-	{
-		hold[0] = &mandelbrot;
-		hold[1] = &julia;
-		hold[2] = &burningship;
-		hold[3] = &mandelbrot_flower;
-	}
-	return (&hold[fractal]);
-}
-
 static void		mlx_events(t_fractol *fractol)
 {
 	mlx_hook(fractol->mlx_win, 2, 0, event_manager, &fractol);
