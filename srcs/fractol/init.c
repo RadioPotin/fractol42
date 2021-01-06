@@ -14,13 +14,14 @@
 
 char		**fractal_list(void)
 {
-	static char *list[3];
+	static char *list[4];
 
 	if (!list[0])
 	{
 		list[0] = "mandelbrot";
 		list[1] = "julia";
 		list[2] = "burningship";
+		list[3] = "mandelbrotflower";
 	}
 	return (list);
 }

@@ -41,7 +41,7 @@ static int		fetch_fractal(int argc, char **argv)
 	while (argv[i] && i < argc)
 	{
 		if (!ft_strchr(argv[i], '-'))
-			if ((j = look_up(3, f_list, argv[i])) >= 0)
+			if ((j = look_up(4, f_list, argv[i])) >= 0)
 				return (j);
 		i++;
 	}

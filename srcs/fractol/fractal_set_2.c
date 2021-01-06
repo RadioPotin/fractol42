@@ -12,34 +12,16 @@
 
 #include "fractol.h"
 
-void		set_comp_mandel(int x, int y)
+t_compute		*set_compute_struct(int fractal)
 {
-	t_fractol *f;
+	static t_compute compute_struct_tab[4];
 
-	f = fetchenv();
-	ft_bzero(&f->var, sizeof(t_comp));
-	f->var.c_r = (double)x / f->zm + f->x1 + f->trans_x;
-	f->var.c_i = (double)y / f->zm + f->y1 + f->trans_y;
-}
-
-void		set_comp_julia(int x, int y)
-{
-	t_fractol *f;
-
-	f = fetchenv();
-	ft_bzero(&f->var, sizeof(t_comp));
-	f->var.z_r = (double)x / f->zm + f->x1 + f->trans_x;
-	f->var.z_i = (double)y / f->zm + f->y1 + f->trans_y;
-	f->var.c_r = f->julia_r;
-	f->var.c_i = f->julia_i;
-}
-
-void		set_comp_burningship(int x, int y)
-{
-	t_fractol *f;
-
-	f = fetchenv();
-	ft_bzero(&f->var, sizeof(t_comp));
-	f->var.c_r = (double)x / f->zm + f->x1 + f->trans_x;
-	f->var.c_i = (double)y / f->zm + f->y1 + f->trans_y;
+	if (!compute_struct_tab[0])
+	{
+		compute_struct_tab[0] = &set_comp_mandel;
+		compute_struct_tab[1] = &set_comp_julia;
+		compute_struct_tab[2] = &set_comp_burningship;
+		compute_struct_tab[3] = &set_comp_mandel;
+	}
+	return (&compute_struct_tab[fractal]);
 }

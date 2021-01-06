@@ -28,7 +28,7 @@ int	ft_switch(int k)
 	t_fractol *fractol;
 
 	k -= 82;
-	if (k < 3)
+	if (k < 4)
 	{
 		fractol = fetchenv();
 		fractol->requested_fractal = k;

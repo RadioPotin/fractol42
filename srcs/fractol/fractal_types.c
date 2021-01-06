@@ -67,3 +67,24 @@ int		burningship(void)
 	}
 	return (0);
 }
+
+int		mandelbrot_flower(void)
+{
+	double n;
+	double t;
+	t_fractol *f;
+
+	f = fetchenv();
+	n = pow(f->var.z_r, 6) + pow(f->var.z_i, 6);
+	t = 0;
+	while (f->var.iter++ < f->max_iteration && n < 2)
+	{
+		t = f->var.z_r;
+		f->var.z_r = pow(f->var.z_r, 6) - (15 * pow(f->var.z_r, 4) * pow(f->var.z_i, 2)) +
+			(15 * pow(f->var.z_r, 2) * pow(f->var.z_i, 4)) - pow(f->var.z_i, 6) + f->var.c_i;
+		f->var.z_i = (6 * pow(t, 5) * f->var.z_i - 20 * pow(t, 3) *
+				pow(f->var.z_i, 3) + 6 * t * pow(f->var.z_i, 5)) + f->var.c_r;
+		n = pow(f->var.z_r, 6) + pow(f->var.z_i, 6);
+	}
+	return (0);
+}

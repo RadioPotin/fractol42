@@ -19,6 +19,7 @@ static double	set_x1(int fractal)
 	x1_values[0] = -2.1;
 	x1_values[1] = 0.285;
 	x1_values[2] = -2.1;
+	x1_values[3] = -2.5;
 	return (x1_values[fractal]);
 }
 
@@ -29,6 +30,7 @@ static double	set_y1(int fractal)
 	y1_values[0] = -1.2;
 	y1_values[1] = 0.013;
 	y1_values[2] = -1.8;
+	y1_values[3] = -1.9;
 	return (y1_values[fractal]);
 }
 
@@ -39,6 +41,7 @@ static int	set_maxiter(int fractal)
 	maxiter_values[0] = 50;
 	maxiter_values[1] = 50;
 	maxiter_values[2] = 300;
+	maxiter_values[3] = 50;
 	return (maxiter_values[fractal]);
 }
 
@@ -49,6 +52,7 @@ static int	set_zoom(int fractal)
 	zoom_values[0] = 450;
 	zoom_values[1] = 450;
 	zoom_values[2] = 300;
+	zoom_values[3] = 400;
 	return (zoom_values[fractal]);
 }
 
@@ -59,6 +63,7 @@ double			set_trans_x(int fractal)
 	trans_x_values[0] = -0.5;
 	trans_x_values[1] = -2.5;
 	trans_x_values[2] = -1.0;
+	trans_x_values[3] = 0.1;
 	return (trans_x_values[fractal]);
 }
 
@@ -69,6 +74,7 @@ double			set_trans_y(int fractal)
 	trans_y_values[0] = 0;
 	trans_y_values[1] = -1.25;
 	trans_y_values[2] = -0.20;
+	trans_y_values[3] = 0.50;
 	return (trans_y_values[fractal]);
 }
 

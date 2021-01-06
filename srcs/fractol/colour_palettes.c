@@ -44,22 +44,22 @@ int		*bryce_canyon(void)
 
 	if (!colour_array[0])
 	{
-		colour_array[0] = 0xff7f00;
-		colour_array[1] = 0xfaa401;
-		colour_array[2] = 0xf4661b;
-		colour_array[3] = 0xef9b0f;
-		colour_array[4] = 0xed7f10;
-		colour_array[5] = 0xe67e30;
-		colour_array[6] = 0xdf6d14;
-		colour_array[7] = 0xcc5500;
-		colour_array[8] = 0x77b5fe;
-		colour_array[9] = 0x318ce7;
-		colour_array[10] = 0x2c75ff;
-		colour_array[11] = 0x1b019b;
-		colour_array[12] = 0x1560bd;
-		colour_array[13] = 0x1034a6;
-		colour_array[14] = 0x0f9de8;
-		colour_array[15] = 0x007fff;
+		colour_array[0] = 0x000303;
+		colour_array[1] = 0x001817;
+		colour_array[2] = 0x002624;
+		colour_array[3] = 0x003530;
+		colour_array[4] = 0x00443b;
+		colour_array[5] = 0x005444;
+		colour_array[6] = 0x00644c;
+		colour_array[7] = 0x007552;
+		colour_array[8] = 0x008656;
+		colour_array[9] = 0x009758;
+		colour_array[10] = 0x00a859;
+		colour_array[11] = 0x00b957;
+		colour_array[12] = 0x00cb53;
+		colour_array[13] = 0x00dc4c;
+		colour_array[14] = 0x00ee41;
+		colour_array[15] = 0x2bff30;
 	}
 	return (colour_array);
 }
@@ -90,6 +90,32 @@ int		*are_you_ogay(void)
 	return (colour_array);
 }
 
+int		*fire(void)
+{
+	static int colour_array[16];
+
+	if (!colour_array[0])
+	{
+		colour_array[0] = 0x582a2a;
+		colour_array[1] = 0x6a322e;
+		colour_array[2] = 0x7b3b31;
+		colour_array[3] = 0x8c4533;
+		colour_array[4] = 0x9d5033;
+		colour_array[5] = 0xad5b33;
+		colour_array[6] = 0xbb6831;
+		colour_array[7] = 0xc9762f;
+		colour_array[8] = 0xd5842b;
+		colour_array[9] = 0xdf9426;
+		colour_array[10] = 0xe8a41f;
+		colour_array[11] = 0xefb516;
+		colour_array[12] = 0xf5c70a;
+		colour_array[13] = 0xf8d900;
+		colour_array[14] = 0xf9ec00;
+		colour_array[15] = 0xf8ff00;
+	}
+	return (colour_array);
+}
+
 int		*colour_tab(int palet)
 {
 	static t_palette colour_palettes[16];
@@ -99,6 +125,7 @@ int		*colour_tab(int palet)
 		colour_palettes[0] = &miko_vanille_fraise;
 		colour_palettes[1] = &bryce_canyon;
 		colour_palettes[2] = &are_you_ogay;
+		colour_palettes[3] = &fire;
 	}
 	return (colour_palettes[palet]());
 }

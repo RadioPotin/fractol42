@@ -90,6 +90,7 @@ void			clear_image(void);
 int				julia(void);
 int				mandelbrot(void);
 int				burningship(void);
+int				mandelbrot_flower(void);
 
 
 void			draw(t_fractalizer *f, int fractal);
