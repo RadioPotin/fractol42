@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:10:59 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/06 16:24:56 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/07 11:16:43 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_fractol	*fetchenv(void)
 	return (fractol);
 }
 
-void			initialize_variables(int fractal)
+void		initialize_variables(int fractal)
 {
 	t_fractol	*frac;
 

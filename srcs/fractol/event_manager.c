@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:27:16 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/06 16:25:15 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/07 12:10:13 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,7 @@ int				event_manager(int k)
 			WIDTH, HEIGHT);
 	fractol->img_tab = (int *)mlx_get_data_addr(fractol->mlx_img_ptr,
 			&fractol->bpp, &fractol->size_line, &fractol->endian);
-	return (event_holder[k](k));
+	event_holder[k](k);
+	menudisplay();
+	return (1);
 }

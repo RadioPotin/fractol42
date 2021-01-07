@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractal_set_2.c                                    :+:      :+:    :+:   */
+/*   variable_init_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/07 15:28:29 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/07 11:35:07 by dapinto          ###   ########.fr       */
+/*   Created: 2021/01/07 11:36:50 by dapinto           #+#    #+#             */
+/*   Updated: 2021/01/07 11:37:38 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_compute		*set_compute_struct(int fractal)
+int			set_maxiter(int fractal)
 {
-	static t_compute compute_struct_tab[4];
+	int		maxiter_values[9];
 
-	if (!compute_struct_tab[0])
-	{
-		compute_struct_tab[0] = &set_comp_mandel;
-		compute_struct_tab[1] = &set_comp_julia;
-		compute_struct_tab[2] = &set_comp_burningship;
-		compute_struct_tab[3] = &set_comp_mandel;
-	}
-	return (&compute_struct_tab[fractal]);
+	maxiter_values[0] = 50;
+	maxiter_values[1] = 50;
+	maxiter_values[2] = 300;
+	maxiter_values[3] = 50;
+	return (maxiter_values[fractal]);
+}
+
+int			set_zoom(int fractal)
+{
+	int		zoom_values[9];
+
+	zoom_values[0] = 450;
+	zoom_values[1] = 450;
+	zoom_values[2] = 300;
+	zoom_values[3] = 400;
+	return (zoom_values[fractal]);
 }

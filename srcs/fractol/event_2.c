@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:10:57 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/06 16:25:19 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/07 12:16:48 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	mouse_zm(int k, int x, int y)
 		}
 		k == 1 || k == 4 ? f->zm *= 1.25 : 0.0;
 		draw(f->fractal_type, f->requested_fractal);
+		menudisplay();
 	}
 	return (1);
 }
@@ -75,6 +76,7 @@ int	mouse_mvt(int x, int y)
 		f->julia_r = (double)x / f->zm + f->x1 + f->trans_x;
 		f->julia_i = (double)y / f->zm + f->y1 + f->trans_y;
 		draw(f->fractal_type, 1);
+		menudisplay();
 	}
 	return (1);
 }

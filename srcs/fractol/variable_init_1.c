@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   variable_init.c                                    :+:      :+:    :+:   */
+/*   variable_init_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 17:30:40 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/06 16:40:35 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/07 11:37:49 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,28 +32,6 @@ double		set_y1(int fractal)
 	y1_values[2] = -1.8;
 	y1_values[3] = -1.9;
 	return (y1_values[fractal]);
-}
-
-int			set_maxiter(int fractal)
-{
-	int		maxiter_values[9];
-
-	maxiter_values[0] = 50;
-	maxiter_values[1] = 50;
-	maxiter_values[2] = 300;
-	maxiter_values[3] = 50;
-	return (maxiter_values[fractal]);
-}
-
-int			set_zoom(int fractal)
-{
-	int		zoom_values[9];
-
-	zoom_values[0] = 450;
-	zoom_values[1] = 450;
-	zoom_values[2] = 300;
-	zoom_values[3] = 400;
-	return (zoom_values[fractal]);
 }
 
 double		set_trans_x(int fractal)
