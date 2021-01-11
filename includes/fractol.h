@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/06 16:40:35 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/11 11:03:48 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FRACTOL_H
 # define WIDTH 1920
 # define HEIGHT 1080
+# define THREADS 8
 # include <stdlib.h>
 # include "mlx.h"
 # include <math.h>
@@ -63,15 +64,28 @@ typedef struct		s_fractol
 	double			julia_r;
 	double			julia_i;
 	t_fractalizer	*fractal_type;
+	t_compute 		*fractal_compute;
 }					t_fractol;
+
+typedef struct		s_thread
+{
+	int				id;
+	int 			y_limit;
+	t_fractol		current_env;
+}					t_thread;
+
+/* Miscellaneous features */
 
 char			**fractal_list(void);
 int				get_arguments(int argc, char **argv);
 void			usage(void);
 void			print_fractal_list(void);
 
+/* Environment */
+
 t_fractol		*fetchenv(void);
-t_fractalizer	*fractal_holder(int fractal);
+
+/* Events and window details */
 
 int				do_nothing(int k);
 int				mouse_zm(int key, int x, int y);
@@ -83,11 +97,23 @@ int				ft_switch(int k);
 int				switch_palette(int k);
 int				ft_reset(int k);
 int				lockmvt(int k);
-
-int				*colour_tab(int palet);
 void			clear_image(void);
+int				*colour_tab(int palet);
 void            menudisplay(void);
 
+void			draw(void);
+
+/* Fractals */
+
+t_fractalizer	*fractal_holder(int fractal);
+int				julia(void);
+int				mandelbrot(void);
+int				burningship(void);
+int				mandelbrot_flower(void);
+
+/* Fractal variables init */
+
+void			initialize_variables(int fractal_type);
 double			set_x1(int fractal);
 double			set_y1(int fractal);
 int				set_maxiter(int fractal);
@@ -95,19 +121,11 @@ int				set_zoom(int fractal);
 double			set_trans_y(int fractal);
 double			set_trans_x(int fractal);
 
-int				julia(void);
-int				mandelbrot(void);
-int				burningship(void);
-int				mandelbrot_flower(void);
+/* Computation functions */
 
-
-void			draw(t_fractalizer *f, int fractal);
-
-void			initialize_variables(int fractal_type);
+t_compute		*set_compute_struct(int fractal);
 void			set_comp_mandel(int x, int y);
 void			set_comp_julia(int x, int y);
 void			set_comp_burningship(int x, int y);
-t_compute		*set_compute_struct(int fractal);
-
 
 #endif

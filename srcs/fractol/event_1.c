@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:10:16 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/06 16:25:31 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/11 10:44:46 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		ft_translate(int k)
 		f->trans_x += (k == 123) ? 0.080 : -0.080;
 	else
 		f->trans_y += (k == 126) ? 0.080 : -0.080;
-	draw(f->fractal_type, f->requested_fractal);
+	draw();
 	return (0);
 }
 
@@ -44,7 +44,7 @@ int		switch_palette(int k)
 	(void)k;
 	f = fetchenv();
 	f->eve.palet = (f->eve.palet + 1 < 4) ? f->eve.palet + 1 : 0;
-	draw(f->fractal_type, f->requested_fractal);
+	draw();
 	return (0);
 }
 
