@@ -6,7 +6,7 @@
 #    By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/07 16:47:44 by evogel            #+#    #+#              #
-#    Updated: 2021/01/07 11:38:44 by dapinto          ###   ########.fr        #
+#    Updated: 2021/01/12 13:37:23 by dapinto          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,8 @@ FRAC_SRCS += fractal_set_1.c
 FRAC_SRCS += fractal_set_2.c
 FRAC_SRCS += fractal_types.c
 FRAC_SRCS += init.c
-FRAC_SRCS += colour_palettes.c
+FRAC_SRCS += colour_palettes_1.c
+FRAC_SRCS += colour_palettes_2.c
 FRAC_SRCS += variable_init_1.c
 FRAC_SRCS += variable_init_2.c
 FRAC_SRCS += argument_manager.c

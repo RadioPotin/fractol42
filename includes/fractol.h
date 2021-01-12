@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/12 11:51:07 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/12 13:38:40 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,10 @@ int				switch_palette(int k);
 int				ft_reset(int k);
 int				lockmvt(int k);
 void			clear_image(void);
-int				*colour_tab(int palet);
 void            menudisplay(void);
+
+int				*colour_tab(int palet);
+int				*alberage(void);
 
 void			draw(void);
 

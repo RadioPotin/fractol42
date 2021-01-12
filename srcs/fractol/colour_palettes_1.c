@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colour_palettes.c                                  :+:      :+:    :+:   */
+/*   colour_palettes_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:17:18 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/06 16:25:36 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/12 13:37:04 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ int		*colour_tab(int palet)
 		colour_palettes[1] = &bryce_canyon;
 		colour_palettes[2] = &are_you_ogay;
 		colour_palettes[3] = &fire;
+		colour_palettes[4] = &alberage;
 	}
 	return (colour_palettes[palet]());
 }
