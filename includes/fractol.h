@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/11 11:03:48 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/12 11:51:07 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # include <pthread.h>
 # include "ft_printf.h"
 
-typedef int			(*t_fractalizer)(void);
-typedef void		(*t_compute)(int, int);
 typedef int			(*t_event)(int);
 typedef int			*(*t_palette)(void);
 
@@ -56,22 +54,28 @@ typedef struct		s_fractol
 	int				max_iteration;
 	int				zm;
 	t_eve			eve;
-	t_comp			var;
 	double			trans_x;
 	double			trans_y;
 	double			x1;
 	double			y1;
 	double			julia_r;
 	double			julia_i;
-	t_fractalizer	*fractal_type;
-	t_compute 		*fractal_compute;
+	int				(**fractal_type)(int, t_comp *);
+	void 			(**fractal_compute)(int, int, struct s_fractol *, t_comp *);
 }					t_fractol;
+
+typedef int			(*t_fractalizer)(int, t_comp *);
+typedef void		(*t_compute)(int, int, t_fractol *, t_comp *);
 
 typedef struct		s_thread
 {
-	int				id;
-	int 			y_limit;
-	t_fractol		current_env;
+	pthread_t		id;
+	double			y;
+	double			x;
+	int 			n;
+	int				top;
+	t_comp			var;
+	t_fractol		*env;
 }					t_thread;
 
 /* Miscellaneous features */
@@ -106,10 +110,10 @@ void			draw(void);
 /* Fractals */
 
 t_fractalizer	*fractal_holder(int fractal);
-int				julia(void);
-int				mandelbrot(void);
-int				burningship(void);
-int				mandelbrot_flower(void);
+int				julia(int maxiter, t_comp *var);
+int				mandelbrot(int maxiter, t_comp *var);
+int				burningship(int maxiter, t_comp *var);
+int				mandelbrot_flower(int maxiter, t_comp *var);
 
 /* Fractal variables init */
 
@@ -124,8 +128,8 @@ double			set_trans_x(int fractal);
 /* Computation functions */
 
 t_compute		*set_compute_struct(int fractal);
-void			set_comp_mandel(int x, int y);
-void			set_comp_julia(int x, int y);
-void			set_comp_burningship(int x, int y);
+void			set_comp_mandel(int x, int y, t_fractol *f, t_comp *var);
+void			set_comp_julia(int x, int y, t_fractol *f, t_comp *var);
+void			set_comp_burningship(int x, int y, t_fractol *f, t_comp *var);
 
 #endif

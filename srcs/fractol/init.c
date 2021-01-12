@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/18 12:10:59 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/07 11:16:43 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/11 15:40:06 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ t_fractol	*fetchenv(void)
 		fractol->mlx_win = mlx_new_window(fractol->mlx_server_ptr, WIDTH,
 				HEIGHT, "Fract'ol");
 		ft_bzero(&fractol->eve, sizeof(t_eve));
-		ft_bzero(&fractol->var, sizeof(t_comp));
 		fractol->eve.lock = 1;
 	}
 	return (fractol);

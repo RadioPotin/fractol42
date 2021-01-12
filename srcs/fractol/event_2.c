@@ -6,13 +6,13 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:10:57 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/11 10:57:55 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/12 11:22:23 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	ft_reset(int k)
+int			ft_reset(int k)
 {
 	t_fractol *f;
 
@@ -23,7 +23,7 @@ int	ft_reset(int k)
 	return (1);
 }
 
-void				clear_image(void)
+void		clear_image(void)
 {
 	t_fractol	*f;
 	int			i;
@@ -38,7 +38,7 @@ void				clear_image(void)
 	}
 }
 
-int	ft_switch(int k)
+int			ft_switch(int k)
 {
 	t_fractol *fractol;
 
@@ -55,7 +55,7 @@ int	ft_switch(int k)
 	return (1);
 }
 
-int	mouse_zm(int k, int x, int y)
+int			mouse_zm(int k, int x, int y)
 {
 	t_fractol *f;
 
@@ -81,7 +81,7 @@ int	mouse_zm(int k, int x, int y)
 	return (1);
 }
 
-int	mouse_mvt(int x, int y)
+int			mouse_mvt(int x, int y)
 {
 	t_fractol *f;
 

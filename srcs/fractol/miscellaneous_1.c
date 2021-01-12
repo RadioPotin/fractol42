@@ -6,13 +6,13 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 12:20:51 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/11 10:57:55 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/12 11:52:46 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void			trigger_px(double x, double y)
+static void			trigger_px(double x, double y, t_comp *var)
 {
 	t_fractol	*f;
 	long		i;
@@ -21,32 +21,60 @@ static void			trigger_px(double x, double y)
 	f = fetchenv();
 	colour_table = colour_tab(f->eve.palet);
 	i = 0 + y * WIDTH + x;
-	if (x >= 0 && f->var.iter < f->max_iteration)
-		f->img_tab[i] = colour_table[f->var.iter % 16];
+	if (x >= 0 && var->iter < f->max_iteration)
+		f->img_tab[i] = colour_table[var->iter % 16];
 	else
 		f->img_tab[i] = 0;
 }
 
-void				draw(void)
+void				*proceed(void *arg)
 {
+	int			max_iteration;
 	int			x;
 	int			y;
-	t_fractol	*fractol;
+	t_thread	*thread;
+	t_comp		var;
 
-	y = 0;
-	fractol = fetchenv();
-	while (y < HEIGHT)
+	thread = (t_thread *)arg;
+	y = thread->y;
+	var = thread->var;
+	max_iteration = thread->env->max_iteration;
+	while (y < thread->top)
 	{
 		x = 0;
 		while (x < WIDTH)
 		{
-			(*fractol->fractal_compute)(x, y);
-			(*fractol->fractal_type)();
-			trigger_px(x, y);
+			(*thread->env->fractal_compute)(x, y, thread->env, &(var));
+			(*thread->env->fractal_type)(max_iteration, &(var));
+			trigger_px((double)x, (double)y, &(var));
 			x++;
 		}
 		y++;
 	}
+	pthread_exit(NULL);
+	return (NULL);
+}
+
+void				draw(void)
+{
+	int				i;
+	t_fractol		*fractol;
+	t_thread		thread[THREADS];
+
+	i = 0;
+	fractol = fetchenv();
+	while (i < THREADS)
+	{
+		thread[i].n = i;
+		thread[i].env = fractol;
+		thread[i].top = (i + 1) * HEIGHT / THREADS;
+		thread[i].y = i * HEIGHT / THREADS;
+		pthread_create(&(thread[i].id), NULL, &proceed, (void *)&thread[i]);
+		i++;
+	}
+	i = 0;
+	while (i < THREADS)
+		pthread_join(thread[i++].id, NULL);
 	mlx_put_image_to_window(fractol->mlx_server_ptr, fractol->mlx_win,
 			fractol->mlx_img_ptr, 0, 0);
 }

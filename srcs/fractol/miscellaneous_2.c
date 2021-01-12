@@ -6,13 +6,13 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 12:20:51 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/08 13:17:33 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/12 11:31:46 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_fractalizer	*fractal_holder(int fractal)
+t_fractalizer		*fractal_holder(int fractal)
 {
 	static t_fractalizer hold[9];
 
@@ -26,7 +26,7 @@ t_fractalizer	*fractal_holder(int fractal)
 	return (&hold[fractal]);
 }
 
-static void		menudisplay_sets(void)
+static void			menudisplay_sets(void)
 {
 	t_fractol *f;
 
@@ -47,7 +47,7 @@ static void		menudisplay_sets(void)
 		0xffffff, "Change set    : 0 to 3 on Numpad");
 }
 
-void			menudisplay(void)
+void				menudisplay(void)
 {
 	t_fractol *f;
 

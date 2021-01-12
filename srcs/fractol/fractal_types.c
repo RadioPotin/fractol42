@@ -6,87 +6,87 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 12:43:39 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/07 11:32:11 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/12 11:23:21 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		mandelbrot(void)
+int		mandelbrot(int maxiter, t_comp *comp)
 {
-	t_fractol	*f;
 	double		tmp;
 	int			n;
+	t_comp		*var;
 
-	f = fetchenv();
-	n = f->var.z_r * f->var.z_r + f->var.z_i * f->var.z_i;
-	while (n < 4 && f->var.iter < f->max_iteration)
+	var = comp;
+	n = var->z_r * var->z_r + var->z_i * var->z_i;
+	while (n < 4 && var->iter < maxiter)
 	{
-		tmp = f->var.z_r * f->var.z_r - f->var.z_i * f->var.z_i + f->var.c_r;
-		f->var.z_i = 2.0 * f->var.z_i * f->var.z_r + f->var.c_i;
-		f->var.z_r = tmp;
-		f->var.iter++;
-		n = f->var.z_r * f->var.z_r + f->var.z_i * f->var.z_i;
+		tmp = var->z_r * var->z_r - var->z_i * var->z_i + var->c_r;
+		var->z_i = 2.0 * var->z_i * var->z_r + var->c_i;
+		var->z_r = tmp;
+		var->iter++;
+		n = var->z_r * var->z_r + var->z_i * var->z_i;
 	}
 	return (0);
 }
 
-int		julia(void)
+int		julia(int maxiter, t_comp *comp)
 {
-	t_fractol	*f;
 	int			n;
 	double		tmp;
+	t_comp		*var;
 
-	f = fetchenv();
-	n = f->var.z_r * f->var.z_r + f->var.z_i * f->var.z_i;
-	while (n < 4 && f->var.iter < f->max_iteration)
+	var = comp;
+	n = var->z_r * var->z_r + var->z_i * var->z_i;
+	while (n < 4 && var->iter < maxiter)
 	{
-		tmp = f->var.z_r * f->var.z_r - f->var.z_i * f->var.z_i + f->var.c_r;
-		f->var.z_i = 2.0 * f->var.z_i * f->var.z_r + f->var.c_i;
-		f->var.z_r = tmp;
-		f->var.iter++;
-		n = f->var.z_r * f->var.z_r + f->var.z_i * f->var.z_i;
+		tmp = var->z_r * var->z_r - var->z_i * var->z_i + var->c_r;
+		var->z_i = 2.0 * var->z_i * var->z_r + var->c_i;
+		var->z_r = tmp;
+		var->iter++;
+		n = var->z_r * var->z_r + var->z_i * var->z_i;
 	}
 	return (0);
 }
 
-int		burningship(void)
+int		burningship(int maxiter, t_comp *comp)
 {
 	int			n;
 	double		tmp;
-	t_fractol	*f;
+	t_comp		*var;
 
-	f = fetchenv();
-	n = f->var.z_r * f->var.z_r + f->var.z_i * f->var.z_i;
-	while (f->var.iter++ < f->max_iteration && n < 4)
+	var = comp;
+	n = var->z_r * var->z_r + var->z_i * var->z_i;
+	while (var->iter++ < maxiter && n < 4)
 	{
-		tmp = f->var.z_r * f->var.z_r - f->var.z_i * f->var.z_i + f->var.c_r;
-		f->var.z_i = fabs(2 * f->var.z_r * f->var.z_i) + f->var.c_i;
-		f->var.z_r = tmp;
-		n = f->var.z_r * f->var.z_r + f->var.z_i * f->var.z_i;
+		tmp = var->z_r * var->z_r - var->z_i * var->z_i + var->c_r;
+		var->z_i = fabs(2 * var->z_r * var->z_i) + var->c_i;
+		var->z_r = tmp;
+		n = var->z_r * var->z_r + var->z_i * var->z_i;
 	}
 	return (0);
 }
 
-int		mandelbrot_flower(void)
+int		mandelbrot_flower(int maxiter, t_comp *comp)
 {
-	double			n;
-	double			t;
-	t_fractol		*f;
+	double		n;
+	double		t;
+	t_comp		*var;
 
-	f = fetchenv();
-	n = pow(f->var.z_r, 6) + pow(f->var.z_i, 6);
+	var = comp;
+	n = pow(var->z_r, 6) + pow(var->z_i, 6);
 	t = 0;
-	while (f->var.iter++ < f->max_iteration && n < 2)
+	while (var->iter++ < maxiter && n < 2)
 	{
-		t = f->var.z_r;
-		f->var.z_r = pow(f->var.z_r, 6) - (15 * pow(f->var.z_r, 4)
-			* pow(f->var.z_i, 2)) + (15 * pow(f->var.z_r, 2)
-				* pow(f->var.z_i, 4)) - pow(f->var.z_i, 6) + f->var.c_i;
-		f->var.z_i = (6 * pow(t, 5) * f->var.z_i - 20 * pow(t, 3)
-			* pow(f->var.z_i, 3) + 6 * t
-				* pow(f->var.z_i, 5)) + f->var.c_r;
-		n = pow(f->var.z_r, 6) + pow(f->var.z_i, 6);
+		t = var->z_r;
+		var->z_r = pow(var->z_r, 6) - (15 * pow(var->z_r, 4)
+			* pow(var->z_i, 2)) + (15 * pow(var->z_r, 2)
+				* pow(var->z_i, 4)) - pow(var->z_i, 6) + var->c_i;
+		var->z_i = (6 * pow(t, 5) * var->z_i - 20 * pow(t, 3)
+			* pow(var->z_i, 3) + 6 * t
+				* pow(var->z_i, 5)) + var->c_r;
+		n = pow(var->z_r, 6) + pow(var->z_i, 6);
 	}
 	return (0);
 }
