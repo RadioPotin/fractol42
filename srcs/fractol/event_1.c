@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:10:16 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/12 13:38:50 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/12 14:03:39 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		switch_palette(int k)
 
 	(void)k;
 	f = fetchenv();
-	f->eve.palet = (f->eve.palet + 1 < 5) ? f->eve.palet + 1 : 0;
+	f->eve.palet = (f->eve.palet + 1 < 6) ? f->eve.palet + 1 : 0;
 	draw();
 	return (0);
 }

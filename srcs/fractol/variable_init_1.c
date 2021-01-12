@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 17:30:40 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/12 13:46:21 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/12 15:18:27 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ double set_y1(int fractal)
 		y1_values[0] = -1.2;
 		y1_values[1] = 0.013;
 		y1_values[2] = -1.8;
-		y1_values[3] = -1.9;
+		y1_values[3] = -1.75;
 	}
 	return (y1_values[fractal]);
 }
@@ -47,9 +47,9 @@ double set_trans_x(int fractal)
 	if (!trans_x_values[0])
 	{
 		trans_x_values[0] = -0.5;
-		trans_x_values[1] = -2.5;
+		trans_x_values[1] = -2.40;
 		trans_x_values[2] = -1.0;
-		trans_x_values[3] = 0.1;
+		trans_x_values[3] = 0.352;
 	}
 	return (trans_x_values[fractal]);
 }
@@ -60,8 +60,8 @@ double set_trans_y(int fractal)
 
 	if (!trans_y_values[0])
 	{
-		trans_y_values[0] = 0;
-		trans_y_values[1] = -1.25;
+		trans_y_values[0] = 0.0;
+		trans_y_values[1] = -1.2;
 		trans_y_values[2] = -0.20;
 		trans_y_values[3] = 0.50;
 	}

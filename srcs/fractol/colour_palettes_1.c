@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:17:18 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/12 13:37:04 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/12 13:56:25 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,19 +114,4 @@ int		*fire(void)
 		colour_array[15] = 0xf8ff00;
 	}
 	return (colour_array);
-}
-
-int		*colour_tab(int palet)
-{
-	static t_palette colour_palettes[16];
-
-	if (!colour_palettes[0])
-	{
-		colour_palettes[0] = &miko_vanille_fraise;
-		colour_palettes[1] = &bryce_canyon;
-		colour_palettes[2] = &are_you_ogay;
-		colour_palettes[3] = &fire;
-		colour_palettes[4] = &alberage;
-	}
-	return (colour_palettes[palet]());
 }

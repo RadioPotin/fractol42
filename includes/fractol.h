@@ -6,14 +6,14 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/12 13:38:40 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/12 14:15:24 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1280
+# define HEIGHT 720
 # define THREADS 8
 # include <stdlib.h>
 # include "mlx.h"
@@ -105,6 +105,11 @@ void			clear_image(void);
 void            menudisplay(void);
 
 int				*colour_tab(int palet);
+int 			*fire(void);
+int 			*miko_vanille_fraise(void);
+int				*yunowork(void);
+int				*are_you_ogay(void);
+int 			*bryce_canyon(void);
 int				*alberage(void);
 
 void			draw(void);
