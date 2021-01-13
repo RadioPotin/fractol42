@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/13 12:03:46 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/13 12:37:31 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ typedef void		(*t_compute)(int, int, t_fractol *, t_comp *);
 typedef struct		s_thread
 {
 	pthread_t		id;
-	double			y;
 	int 			n;
 	int				top;
 	t_comp			var;
+	double			y;
 	t_fractol		*env;
 }					t_thread;
 
