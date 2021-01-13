@@ -6,13 +6,13 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/07 12:20:51 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/12 14:00:08 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/13 11:39:20 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		*colour_tab(int palet)
+int					*colour_tab(int palet)
 {
 	static t_palette colour_palettes[16];
 
@@ -24,7 +24,6 @@ int		*colour_tab(int palet)
 		colour_palettes[3] = &fire;
 		colour_palettes[4] = &alberage;
 		colour_palettes[5] = &yunowork;
-
 	}
 	return (colour_palettes[palet]());
 }

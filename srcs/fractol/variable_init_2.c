@@ -6,13 +6,13 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 11:36:50 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/12 14:39:14 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/13 11:38:40 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int 	set_maxiter(int fractal)
+int		set_maxiter(int fractal)
 {
 	static int maxiter_values[9];
 
@@ -26,7 +26,7 @@ int 	set_maxiter(int fractal)
 	return (maxiter_values[fractal]);
 }
 
-int 	set_zoom(int fractal)
+int		set_zoom(int fractal)
 {
 	static int zoom_values[9];
 

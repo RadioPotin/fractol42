@@ -6,13 +6,13 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 17:30:40 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/12 15:18:27 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/13 11:39:01 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-double set_x1(int fractal)
+double		set_x1(int fractal)
 {
 	static double x1_values[9];
 
@@ -26,7 +26,7 @@ double set_x1(int fractal)
 	return (x1_values[fractal]);
 }
 
-double set_y1(int fractal)
+double		set_y1(int fractal)
 {
 	static double y1_values[9];
 
@@ -40,7 +40,7 @@ double set_y1(int fractal)
 	return (y1_values[fractal]);
 }
 
-double set_trans_x(int fractal)
+double		set_trans_x(int fractal)
 {
 	static double trans_x_values[9];
 
@@ -54,7 +54,7 @@ double set_trans_x(int fractal)
 	return (trans_x_values[fractal]);
 }
 
-double set_trans_y(int fractal)
+double		set_trans_y(int fractal)
 {
 	static double trans_y_values[9];
 
