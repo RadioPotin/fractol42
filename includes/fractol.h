@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/12 14:15:24 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/13 12:03:46 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ typedef struct		s_thread
 {
 	pthread_t		id;
 	double			y;
-	double			x;
 	int 			n;
 	int				top;
 	t_comp			var;
