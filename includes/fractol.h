@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 12:23:03 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/14 11:40:24 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/18 11:54:20 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FRACTOL_H
 # define WIDTH 1280
 # define HEIGHT 720
-# define THREADS 8
+# define THREADS 4
 # include <stdlib.h>
 # include "mlx.h"
 # include <math.h>
@@ -52,7 +52,7 @@ typedef struct		s_fractol
 	int				size_line;
 	int				requested_fractal;
 	int				max_iteration;
-	int				zm;
+	long int		zm;
 	t_eve			eve;
 	double			trans_x;
 	double			trans_y;

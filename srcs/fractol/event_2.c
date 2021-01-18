@@ -6,7 +6,7 @@
 /*   By: dapinto <dapinto@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 17:10:57 by dapinto           #+#    #+#             */
-/*   Updated: 2021/01/12 11:22:23 by dapinto          ###   ########.fr       */
+/*   Updated: 2021/01/18 11:54:38 by dapinto          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ int			mouse_zm(int k, int x, int y)
 			f->x1 = ((double)x / f->zm + f->x1) - ((double)x / (f->zm / 1.25));
 			f->y1 = ((double)y / f->zm + f->y1) - ((double)y / (f->zm / 1.25));
 		}
-		k == 2 || k == 5 ? f->zm /= 1.25 : 0.0;
+		(k == 2 || k == 5) && f->zm > 15 ? f->zm /= 1.25 : 0.0;
 		if (k == 1)
 		{
 			f->x1 = ((double)x / f->zm + f->x1) - ((double)x / (f->zm * 1.25));
 			f->y1 = ((double)y / f->zm + f->y1) - ((double)y / (f->zm * 1.25));
 		}
-		k == 1 || k == 4 ? f->zm *= 1.25 : 0.0;
+		(k == 1 || k == 4) && f->zm < 489742673694367104 ? f->zm *= 1.25 : 0.0;
 		draw();
 		menudisplay();
 	}
