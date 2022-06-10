@@ -56,7 +56,6 @@ FRAC_NAME = fractol
 FRAC_NAMEDEB = fractoldeb
 FRAC_NAME_LIN = Fractol_linux
 FRAC_NAMEDEB_LIN = Fractol_linuxdeb
-CC = clang
 GCC = gcc
 WFG = -Wall -Wextra -Werror
 COMP = $(CC) -fPIE -c
@@ -64,8 +63,8 @@ COMPL = $(GCC) -c
 DEBUG = $(CC) -g -fsanitize=address -fno-omit-frame-pointer
 DEBUGLIN = $(GCC) -g -fsanitize=address -fno-omit-frame-pointer
 ANALYZE = $(DEBUG) -analyze
-MINILIBLINUX = -lmlx -lXext -lX11 -L $(MLX_DIR)
-MINILIBMAC = -lmlx -framework OpenGL -framework AppKit -L $(MLX_DIR)
+MINILIBLINUX = -lmlx_Linux -lXext -lm -lX11 -L $(MLX_DIR) -pthread
+MINILIBMAC = -L $(MLX_DIR)
 MKDIR = mkdir -p
 DSYM = *.dSYM
 MKE = make -C
@@ -73,10 +72,10 @@ RMRF = rm -rf
 
 #-Libraries, includes, and paths-#
 #-Directories-#
-MLX_DIR = ./minilibx/
+MLX_DIR = minilibx11
 DEBUG_DIR = ./debug/
 HEADER_DIR = ./includes/
-LIB_INCS += -Ilibft/includes
+LIB_INCS += -Ilibft/includes -Iminilibx
 vpath %.c $(FRAC_SRCS_DIR)
 vpath %.o $(OBJS_DIR)
 vpath %deb.o $(DEBOBJS_DIR)
@@ -127,9 +126,9 @@ FRAC_DEBOBJS = $(patsubst %.c, %deb.o, $(FRAC_SRCS))
 FRAC_DEBOBJS_PATH = $(addprefix $(FRAC_DEBOBJS_DIR), $(FRAC_DEBOBJS))
 
 #-Rules-#
-all: $(FRAC_NAME)
+all: $(FRAC_NAME_LIN)
 
-mac: $(FRAC_NAME)
+macdo: $(FRAC_NAME)
 
 linux:  $(FRAC_NAME_LIN)
 
@@ -143,23 +142,23 @@ analyze:
 	@sh build/analyze.sh
 
 $(LIB): FORCE
-	@$(MKE) $(MAKE_PATH)
+	$(MKE) $(MAKE_PATH)
 
 $(LIBDEB): FORCE
-	@$(MKE) $(MAKE_PATH) debug
+	$(MKE) $(MAKE_PATH) debug
 
 #FRACTOL LINUX
 $(FRAC_NAME_LIN): $(LIB) $(FRAC_OBJS_DIR_LIN) $(FRAC_OBJS_PATH)
-	@$(GCC) $(WFG) $(FRAC_INCS) $(FRAC_OBJS_PATH) $(LIB) $(MINILIBLINUX) -o $(FRAC_NAME_LIN)
+	$(GCC) $(WFG) $(FRAC_INCS) $(FRAC_OBJS_PATH) $(LIB) $(MINILIBLINUX) -o $(FRAC_NAME_LIN)
 
 $(FRAC_NAMEDEB_LIN): $(LIBDEB) $(FRAC_DEBOBJS_DIR_LIN) $(FRAC_DEBOBJS_PATH)
-	@$(DEBUGLIN) $(WFG) $(FRAC_INCS) $(FRAC_DEBOBJS_PATH) $(LIBDEB) $(MINILIBLINUX) -o $(FRAC_NAMEDEB_LIN)
+	$(DEBUGLIN) $(WFG) $(FRAC_INCS) $(FRAC_DEBOBJS_PATH) $(LIBDEB) $(MINILIBLINUX) -o $(FRAC_NAMEDEB_LIN)
 
 $(FRAC_OBJS_DIR_LIN)%.o : $(FRAC_SRCS_DIR)%.c $(FRAC_HDS)
-	@$(call run_and_test, $(COMPL) $(WFG) $(FRAC_INCS) $< -o $@)
+	$(call run_and_test, $(COMPL) $(WFG) $(FRAC_INCS) $< -o $@)
 
 $(FRAC_DEBOBJS_DIR_LIN)%deb.o : $(FRAC_SRCS_DIR)%.c $(FRAC_HDS)
-	@$(call run_and_test, $(DEBUGLIN) -c $(WFG) $(FRAC_INCS) $< -o $@)
+	$(call run_and_test, $(DEBUGLIN) -c $(WFG) $(FRAC_INCS) $< -o $@)
 
 #FRACTOL MAC
 $(FRAC_NAME): $(LIB) $(FRAC_OBJS_DIR) $(FRAC_OBJS_PATH)

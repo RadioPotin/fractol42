@@ -76,8 +76,8 @@ void				usage(void)
 	ft_printf("\t[fractol || Fractol_linux]:\n\t\tBinary for Fract'ol.\n\t\t");
 	ft_printf("To ensure that the project is compilable on MacOS as well as ");
 	ft_printf("Linux, the Makefile outputs two different executables.\n\t\t");
-	ft_printf("By default, it will link the project for it to work on MacOS.");
-	ft_printf("\n\t\tElse, if the command \"make linux\" is entered, the pro");
+	ft_printf("By default, it will link the project for it to work on Linux.");
+	ft_printf("\n\t\tElse, if the command \"make macdo\" is entered, the pro");
 	ft_printf("ject will be linked for it work on linux, given X11 library i");
 	ft_printf("s installed.\n\t\tArgument hierarchy goes from top to low: ");
 	ft_printf("[Fractal_Name] > [--h] > [--l]\n\n\t");
